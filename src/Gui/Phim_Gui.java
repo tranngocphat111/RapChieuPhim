@@ -177,7 +177,7 @@ public class Phim_Gui extends javax.swing.JFrame {
             }
         });
 
-        img_phim_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+        img_phim_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QuatMoTrungMa.jpeg"))); // NOI18N
 
         txt_tenphim_1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_tenphim_1.setText("Doraemon");
@@ -213,7 +213,7 @@ public class Phim_Gui extends javax.swing.JFrame {
             }
         });
 
-        img_phim_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+        img_phim_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QuatMoTrungMa.jpeg"))); // NOI18N
 
         txt_tenphim_2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_tenphim_2.setText("Doraemon");
@@ -249,7 +249,7 @@ public class Phim_Gui extends javax.swing.JFrame {
             }
         });
 
-        img_phim_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+        img_phim_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QuatMoTrungMa.jpeg"))); // NOI18N
 
         txt_tenphim_3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_tenphim_3.setText("Doraemon");
@@ -285,7 +285,7 @@ public class Phim_Gui extends javax.swing.JFrame {
             }
         });
 
-        img_phim_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+        img_phim_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QuatMoTrungMa.jpeg"))); // NOI18N
 
         txt_tenphim_4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_tenphim_4.setText("Doraemon");
