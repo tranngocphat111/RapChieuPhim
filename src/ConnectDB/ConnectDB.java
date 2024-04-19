@@ -6,17 +6,37 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDB {
-	private String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyRapPhim";
-	private String user = "sa";
-	private String pass = "12345";
 	
-	private Connection con = null;
-	public ConnectDB() throws SQLException {
+	public static Connection con = null;
+	private static ConnectDB insatance = new ConnectDB();
+	
+	public static ConnectDB getInstance(){
+		return insatance;
+	}
+	
+
+	
+	public static void  Connect() throws SQLException {
+		
+		String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyRapPhim";
+		String user = "sa";
+		String pass = "12345";
 		con = DriverManager.getConnection(url, user, pass);
 		
 	}
 	
-	public Connection getCon() {
+	public void disconnect() {
+		if(con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static Connection getCon() {
 		return con;
 	}
 	

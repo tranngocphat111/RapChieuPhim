@@ -4,8 +4,13 @@
  */
 package Gui;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
+import ConnectDB.ConnectDB;
+import Dao.TaiKhoan_Dao;
 import Entity.NhanVien;
 import Entity.TaiKhoan;
 
@@ -21,14 +26,24 @@ public class Login_Gui extends javax.swing.JFrame {
     /**
      * Creates new form Login_2
      */
-	TaiKhoan taiKhoan = new TaiKhoan("10101", "12345",new NhanVien());
+
 	
 	
 	
     public Login_Gui() {
         
         initComponents();
+        try {
+			ConnectDB.Connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        listTK = tk_dao.printAll();
+        Print();
         setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -185,7 +200,46 @@ public class Login_Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
-    TaiKhoan tk = new TaiKhoan("nhanvien", "123",new NhanVien());
+    
+    public boolean KtraTK(String taiKhoan) {
+    	for(TaiKhoan tk : listTK) {
+    		if(tk.getTenDangNhap().equalsIgnoreCase(taiKhoan)) {
+    			return true;
+    		}
+    		
+    	}
+    	return false;
+    }
+    
+    public boolean Ktra(String matKhau, String taiKhoan) {
+    	for(TaiKhoan tk : listTK) {
+    		if(tk.getMatKhau().equalsIgnoreCase(matKhau) && tk.getTenDangNhap().equalsIgnoreCase(taiKhoan)) {
+    			return true;
+    		}
+    		
+    	}
+    	return false;
+    }
+    
+    
+    public boolean KtraMK(String matKhau) {
+    	for(TaiKhoan tk : listTK) {
+    		if(tk.getMatKhau().equalsIgnoreCase(matKhau)) {
+    			return true;
+    		}
+    		
+    	}
+    	return false;
+    }
+    
+    public void Print() {
+    	for(TaiKhoan tk : listTK) {
+    		System.out.println("TK: " + tk.getTenDangNhap());
+    		System.out.println("MK: " + tk.getMatKhau());
+    		
+    	}
+    }
+    
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
 
@@ -200,18 +254,32 @@ public class Login_Gui extends javax.swing.JFrame {
                 txtPass.requestFocus();
             }
             else {
-                if(!txtTaiKhoan.getText().trim().equals(tk.getTenDangNhap()) ){
+                if(!KtraTK(txtTaiKhoan.getText())){
                     JOptionPane.showMessageDialog(this, "Tên đăng nhập sai", "TenDangNhapSai", JOptionPane.ERROR_MESSAGE);
                     txtTaiKhoan.requestFocus();
+                    return;
                 }
                 else {
-                    if(!txtPass.getText().equals(tk.getMatKhau())){
+                	
+                    if(!KtraMK(txtPass.getText())){
                         JOptionPane.showMessageDialog(this, "Mật khẩu sai", "MatKhauSai", JOptionPane.ERROR_MESSAGE);
                         txtPass.requestFocus();
+            
+                        return;
                     }
                     else {
-                        new Phim_Gui().setVisible(true);
-                        setVisible(false);
+                    	
+                    	if(Ktra(txtPass.getText(),txtTaiKhoan.getText())){
+                    		new Phim_Gui().setVisible(true);
+                    		setVisible(false);
+                    	}else {
+                    		JOptionPane.showMessageDialog(this, "Mật khẩu sai", "MatKhauSai", JOptionPane.ERROR_MESSAGE);
+                            txtPass.requestFocus();
+            
+                            return;
+                    	}
+                        
+                        
                     }}}}
 
     	
@@ -267,6 +335,8 @@ public class Login_Gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ArrayList<TaiKhoan> listTK = new ArrayList<TaiKhoan>();
+    private TaiKhoan_Dao tk_dao = new TaiKhoan_Dao();
     private javax.swing.JButton Login;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

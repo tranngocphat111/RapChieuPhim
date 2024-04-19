@@ -23,6 +23,14 @@ public class NhanVien {
 		this.luong = luong;
 		this.chucVu = chucVu;
 	}
+	
+	
+	public NhanVien(String maNV) {
+		super();
+		this.maNV = maNV;
+	}
+
+
 	public NhanVien() {
 		super();
 	}
