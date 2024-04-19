@@ -35,8 +35,7 @@ public class Phim_Gui extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	
-    	
+
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
@@ -45,9 +44,8 @@ public class Phim_Gui extends javax.swing.JFrame {
         txt_tenphim_4 = new javax.swing.JLabel();
         img_phim_4 = new javax.swing.JLabel();
         pPhim1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        txt_tenphim_1 = new javax.swing.JLabel();
         img_phim_1 = new javax.swing.JLabel();
+        txt_tenphim_1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txt_tenphim_3 = new javax.swing.JLabel();
@@ -143,34 +141,29 @@ public class Phim_Gui extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("_____________________________________________");
+        img_phim_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
 
         txt_tenphim_1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_tenphim_1.setText("Doraemon");
-
-        img_phim_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
 
         javax.swing.GroupLayout pPhim1Layout = new javax.swing.GroupLayout(pPhim1);
         pPhim1.setLayout(pPhim1Layout);
         pPhim1Layout.setHorizontalGroup(
             pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pPhim1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(img_phim_1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel5)
-            .addGroup(pPhim1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(txt_tenphim_1))
+                .addComponent(txt_tenphim_1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(img_phim_1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
         );
         pPhim1Layout.setVerticalGroup(
             pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pPhim1Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(img_phim_1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(txt_tenphim_1))
+                .addGap(1, 1, 1)
+                .addComponent(img_phim_1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_tenphim_1)
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -299,10 +292,7 @@ public class Phim_Gui extends javax.swing.JFrame {
             .addGroup(pXuatChieuLayout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pXuatChieuLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pXuatChieuLayout.setVerticalGroup(
             pXuatChieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,7 +461,6 @@ public class Phim_Gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
