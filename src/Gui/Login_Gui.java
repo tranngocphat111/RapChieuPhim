@@ -40,7 +40,7 @@ public class Login_Gui extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
         listTK = tk_dao.printAll();
-        Print();
+        
         setLocationRelativeTo(null);
         
         
@@ -203,7 +203,7 @@ public class Login_Gui extends javax.swing.JFrame {
     
     public boolean KtraTK(String taiKhoan) {
     	for(TaiKhoan tk : listTK) {
-    		if(tk.getTenDangNhap().equalsIgnoreCase(taiKhoan)) {
+    		if(tk.getTenDangNhap().equals(taiKhoan)) {
     			return true;
     		}
     		
@@ -213,7 +213,7 @@ public class Login_Gui extends javax.swing.JFrame {
     
     public boolean Ktra(String matKhau, String taiKhoan) {
     	for(TaiKhoan tk : listTK) {
-    		if(tk.getMatKhau().equalsIgnoreCase(matKhau) && tk.getTenDangNhap().equalsIgnoreCase(taiKhoan)) {
+    		if(tk.getMatKhau().equals(matKhau) && tk.getTenDangNhap().equals(taiKhoan)) {
     			return true;
     		}
     		
@@ -224,7 +224,7 @@ public class Login_Gui extends javax.swing.JFrame {
     
     public boolean KtraMK(String matKhau) {
     	for(TaiKhoan tk : listTK) {
-    		if(tk.getMatKhau().equalsIgnoreCase(matKhau)) {
+    		if(tk.getMatKhau().equals(matKhau)) {
     			return true;
     		}
     		
