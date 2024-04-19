@@ -39,26 +39,25 @@ public class Phim_Gui extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txt_tenphim_4 = new javax.swing.JLabel();
-        img_phim_4 = new javax.swing.JLabel();
-        pPhim1 = new javax.swing.JPanel();
-        img_phim_1 = new javax.swing.JLabel();
-        txt_tenphim_1 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        txt_tenphim_3 = new javax.swing.JLabel();
-        img_phim_3 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        txt_tenphim_2 = new javax.swing.JLabel();
-        img_phim_2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         pXuatChieu = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         dtXuatChieu = new javax.swing.JDesktopPane();
+        pListPhim = new javax.swing.JPanel();
+        pPhim1 = new javax.swing.JPanel();
+        img_phim_1 = new javax.swing.JLabel();
+        txt_tenphim_1 = new javax.swing.JLabel();
+        pPhim2 = new javax.swing.JPanel();
+        img_phim_2 = new javax.swing.JLabel();
+        txt_tenphim_2 = new javax.swing.JLabel();
+        pPhim3 = new javax.swing.JPanel();
+        img_phim_3 = new javax.swing.JLabel();
+        txt_tenphim_3 = new javax.swing.JLabel();
+        pPhim4 = new javax.swing.JPanel();
+        img_phim_4 = new javax.swing.JLabel();
+        txt_tenphim_4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         btn_num_1 = new javax.swing.JButton();
         btn_num_2 = new javax.swing.JButton();
         btn_num_3 = new javax.swing.JButton();
@@ -87,7 +86,7 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(364, 364, 364)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(372, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,142 +95,6 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel3.setPreferredSize(new java.awt.Dimension(213, 293));
-
-        jLabel2.setText("_____________________________________________");
-
-        txt_tenphim_4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txt_tenphim_4.setText("Doraemon");
-
-        img_phim_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(img_phim_4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel2)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(txt_tenphim_4))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(img_phim_4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(txt_tenphim_4))
-        );
-
-        pPhim1.setBackground(new java.awt.Color(255, 255, 255));
-        pPhim1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        pPhim1.setPreferredSize(new java.awt.Dimension(213, 293));
-        pPhim1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pPhim1MouseClicked(evt);
-            }
-        });
-
-        img_phim_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
-
-        txt_tenphim_1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txt_tenphim_1.setText("Doraemon");
-
-        javax.swing.GroupLayout pPhim1Layout = new javax.swing.GroupLayout(pPhim1);
-        pPhim1.setLayout(pPhim1Layout);
-        pPhim1Layout.setHorizontalGroup(
-            pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPhim1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(txt_tenphim_1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(img_phim_1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-        );
-        pPhim1Layout.setVerticalGroup(
-            pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPhim1Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(img_phim_1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_tenphim_1)
-                .addContainerGap())
-        );
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel5.setPreferredSize(new java.awt.Dimension(213, 293));
-
-        jLabel8.setText("_____________________________________________");
-
-        txt_tenphim_3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txt_tenphim_3.setText("Doraemon");
-
-        img_phim_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(img_phim_3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel8)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(txt_tenphim_3))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(img_phim_3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(txt_tenphim_3))
-        );
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel6.setPreferredSize(new java.awt.Dimension(213, 293));
-
-        txt_tenphim_2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txt_tenphim_2.setText("Doraemon");
-
-        img_phim_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
-
-        jLabel12.setText("_____________________________________________");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(img_phim_2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel12)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(txt_tenphim_2))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(img_phim_2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(txt_tenphim_2))
         );
 
         pXuatChieu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -271,7 +134,7 @@ public class Phim_Gui extends javax.swing.JFrame {
         );
         dtXuatChieuLayout.setVerticalGroup(
             dtXuatChieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 558, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -303,6 +166,152 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
+        pListPhim.setLayout(new java.awt.GridLayout(2, 2, 70, 20));
+
+        pPhim1.setBackground(new java.awt.Color(255, 255, 255));
+        pPhim1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        pPhim1.setPreferredSize(new java.awt.Dimension(213, 293));
+        pPhim1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pPhim1MouseClicked(evt);
+            }
+        });
+
+        img_phim_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+
+        txt_tenphim_1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_tenphim_1.setText("Doraemon");
+
+        javax.swing.GroupLayout pPhim1Layout = new javax.swing.GroupLayout(pPhim1);
+        pPhim1.setLayout(pPhim1Layout);
+        pPhim1Layout.setHorizontalGroup(
+            pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(txt_tenphim_1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(img_phim_1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+        );
+        pPhim1Layout.setVerticalGroup(
+            pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim1Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(img_phim_1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_tenphim_1)
+                .addContainerGap())
+        );
+
+        pListPhim.add(pPhim1);
+
+        pPhim2.setBackground(new java.awt.Color(255, 255, 255));
+        pPhim2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        pPhim2.setPreferredSize(new java.awt.Dimension(213, 293));
+        pPhim2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pPhim2MouseClicked(evt);
+            }
+        });
+
+        img_phim_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+
+        txt_tenphim_2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_tenphim_2.setText("Doraemon");
+
+        javax.swing.GroupLayout pPhim2Layout = new javax.swing.GroupLayout(pPhim2);
+        pPhim2.setLayout(pPhim2Layout);
+        pPhim2Layout.setHorizontalGroup(
+            pPhim2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(txt_tenphim_2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(img_phim_2, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+        );
+        pPhim2Layout.setVerticalGroup(
+            pPhim2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim2Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(img_phim_2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_tenphim_2)
+                .addContainerGap())
+        );
+
+        pListPhim.add(pPhim2);
+
+        pPhim3.setBackground(new java.awt.Color(255, 255, 255));
+        pPhim3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        pPhim3.setPreferredSize(new java.awt.Dimension(213, 293));
+        pPhim3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pPhim3MouseClicked(evt);
+            }
+        });
+
+        img_phim_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+
+        txt_tenphim_3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_tenphim_3.setText("Doraemon");
+
+        javax.swing.GroupLayout pPhim3Layout = new javax.swing.GroupLayout(pPhim3);
+        pPhim3.setLayout(pPhim3Layout);
+        pPhim3Layout.setHorizontalGroup(
+            pPhim3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim3Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(txt_tenphim_3)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(img_phim_3, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+        );
+        pPhim3Layout.setVerticalGroup(
+            pPhim3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim3Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(img_phim_3, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_tenphim_3)
+                .addContainerGap())
+        );
+
+        pListPhim.add(pPhim3);
+
+        pPhim4.setBackground(new java.awt.Color(255, 255, 255));
+        pPhim4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        pPhim4.setPreferredSize(new java.awt.Dimension(213, 293));
+        pPhim4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pPhim4MouseClicked(evt);
+            }
+        });
+
+        img_phim_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quat-mo-trung-ma.jpeg"))); // NOI18N
+
+        txt_tenphim_4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_tenphim_4.setText("Doraemon");
+
+        javax.swing.GroupLayout pPhim4Layout = new javax.swing.GroupLayout(pPhim4);
+        pPhim4.setLayout(pPhim4Layout);
+        pPhim4Layout.setHorizontalGroup(
+            pPhim4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim4Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(txt_tenphim_4)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(img_phim_4, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+        );
+        pPhim4Layout.setVerticalGroup(
+            pPhim4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPhim4Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(img_phim_4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_tenphim_4)
+                .addContainerGap())
+        );
+
+        pListPhim.add(pPhim4);
+
         btn_num_1.setText("1");
         btn_num_1.setBorder(null);
         btn_num_1.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -330,31 +339,42 @@ public class Phim_Gui extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_num_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_num_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_num_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_num_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_num_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_num_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pPhim1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
+                .addComponent(pListPhim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pXuatChieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(btn_num_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_num_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_num_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(256, 256, 256)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -363,21 +383,11 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pPhim1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pXuatChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pXuatChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pListPhim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_num_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_num_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_num_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -402,13 +412,24 @@ public class Phim_Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void pPhim1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPhim1MouseClicked
-                // TODO add your handling code here:
-             XuatChieu_Gui xc = new XuatChieu_Gui();
-             xc.setVisible(true);
-             dtXuatChieu.removeAll();
-             dtXuatChieu.add(xc);
-       
+        // TODO add your handling code here:
+        XuatChieu_Gui xc = new XuatChieu_Gui();
+        xc.setVisible(true);
+        dtXuatChieu.removeAll();
+        dtXuatChieu.add(xc);
     }//GEN-LAST:event_pPhim1MouseClicked
+
+    private void pPhim2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPhim2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pPhim2MouseClicked
+
+    private void pPhim3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPhim3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pPhim3MouseClicked
+
+    private void pPhim4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPhim4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pPhim4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -458,17 +479,16 @@ public class Phim_Gui extends javax.swing.JFrame {
     private javax.swing.JLabel img_phim_3;
     private javax.swing.JLabel img_phim_4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel pListPhim;
     private javax.swing.JPanel pPhim1;
+    private javax.swing.JPanel pPhim2;
+    private javax.swing.JPanel pPhim3;
+    private javax.swing.JPanel pPhim4;
     private javax.swing.JPanel pXuatChieu;
     private javax.swing.JLabel txt_tenphim_1;
     private javax.swing.JLabel txt_tenphim_2;
