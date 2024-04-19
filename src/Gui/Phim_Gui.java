@@ -86,7 +86,7 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(364, 364, 364)
                 .addComponent(jLabel1)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,18 +179,16 @@ public class Phim_Gui extends javax.swing.JFrame {
 
         img_phim_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QuatMoTrungMa.jpeg"))); // NOI18N
 
-        txt_tenphim_1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txt_tenphim_1.setText("Doraemon");
+        txt_tenphim_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_tenphim_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tenphim_1.setText("Quật Mộ Trùng Ma ");
 
         javax.swing.GroupLayout pPhim1Layout = new javax.swing.GroupLayout(pPhim1);
         pPhim1.setLayout(pPhim1Layout);
         pPhim1Layout.setHorizontalGroup(
             pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPhim1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(txt_tenphim_1)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(img_phim_1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+            .addComponent(txt_tenphim_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pPhim1Layout.setVerticalGroup(
             pPhim1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +196,7 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(img_phim_1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_tenphim_1)
+                .addComponent(txt_tenphim_1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -216,17 +214,15 @@ public class Phim_Gui extends javax.swing.JFrame {
         img_phim_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QuatMoTrungMa.jpeg"))); // NOI18N
 
         txt_tenphim_2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_tenphim_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_tenphim_2.setText("Doraemon");
 
         javax.swing.GroupLayout pPhim2Layout = new javax.swing.GroupLayout(pPhim2);
         pPhim2.setLayout(pPhim2Layout);
         pPhim2Layout.setHorizontalGroup(
             pPhim2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPhim2Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(txt_tenphim_2)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(img_phim_2, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+            .addComponent(txt_tenphim_2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pPhim2Layout.setVerticalGroup(
             pPhim2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,11 +362,11 @@ public class Phim_Gui extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(pListPhim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(pXuatChieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(256, 256, 256)
