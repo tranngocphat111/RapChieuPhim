@@ -12,8 +12,9 @@ public class LoaiGhe {
 	}
 
 
-	public LoaiGhe() {
+	public LoaiGhe(String maLoaiGhe) {
 		super();
+		this.maLoaiGhe = maLoaiGhe;
 	}
 
 

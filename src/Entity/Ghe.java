@@ -10,8 +10,10 @@ public class Ghe {
 		this.loaiGhe = loaiGhe;
 		this.donGia = donGia;
 	}
-	public Ghe() {
+	public Ghe(String maGhe) {
 		super();
+		this.maGhe = maGhe;
+		
 	}
 	public String getMaGhe() {
 		return maGhe;

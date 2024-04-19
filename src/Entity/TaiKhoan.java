@@ -7,12 +7,21 @@ public class TaiKhoan {
 	
 	
 	
+	public NhanVien getNhanVien() {
+		return nhanVien;
+	}
+
+	public void setNhanVien(NhanVien nhanVien) {
+		this.nhanVien = nhanVien;
+	}
+
 	public TaiKhoan(String tenDangNhap, String matKhau, NhanVien nhanVien) {
 		super();
 		this.tenDangNhap = tenDangNhap;
 		this.matKhau = matKhau;
 		this.nhanVien = nhanVien;
 	}
+	
 	
 	public String getTenDangNhap() {
 		return tenDangNhap;

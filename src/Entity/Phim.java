@@ -1,7 +1,6 @@
 package Entity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Phim {
 	private String maPhim;
@@ -9,6 +8,7 @@ public class Phim {
 	private String tenPhim;
 	private	int thoiLuong;
 	private LocalDate ngayPhatHanh;
+	private HinhAnh hinhAnh;
 	
 	
 	
@@ -18,14 +18,36 @@ public class Phim {
 	public Phim() {
 		super();
 	}
-	public Phim(String maPhim, LoaiPhim loaiphim, String tenPhim, int thoiLuong, LocalDate ngayPhatHanh) {
+	
+	
+	public HinhAnh getHinhAnh() {
+		return hinhAnh;
+	}
+
+
+	public void setHinhAnh(HinhAnh hinhAnh) {
+		this.hinhAnh = hinhAnh;
+	}
+
+
+	public Phim(String maPhim) {
+		super();
+		this.maPhim = maPhim;
+	}
+
+
+	public Phim(String maPhim, LoaiPhim loaiphim, String tenPhim, int thoiLuong, LocalDate ngayPhatHanh,
+			HinhAnh hinhAnh) {
 		super();
 		this.maPhim = maPhim;
 		this.loaiphim = loaiphim;
 		this.tenPhim = tenPhim;
 		this.thoiLuong = thoiLuong;
 		this.ngayPhatHanh = ngayPhatHanh;
+		this.hinhAnh = hinhAnh;
 	}
+
+
 	public String getMaPhim() {
 		return maPhim;
 	}

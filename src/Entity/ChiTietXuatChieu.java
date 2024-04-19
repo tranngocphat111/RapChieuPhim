@@ -6,17 +6,41 @@ public class ChiTietXuatChieu {
 	private Phong phong;
 	
 	
-	public ChiTietXuatChieu() {
+	public ChiTietXuatChieu(String maCTXC) {
 		super();
+		this.maCTXC = maCTXC;
 	}
 
 
-	public ChiTietXuatChieu(String maCTXC, XuatChieu xuatChieu, Phim phim) {
+	
+
+
+	public Phong getPhong() {
+		return phong;
+	}
+
+
+
+
+
+	public void setPhong(Phong phong) {
+		this.phong = phong;
+	}
+
+
+
+
+
+	public ChiTietXuatChieu(String maCTXC, XuatChieu xuatChieu, Phim phim, Phong phong) {
 		super();
 		this.maCTXC = maCTXC;
 		this.xuatChieu = xuatChieu;
 		this.phim = phim;
+		this.phong = phong;
 	}
+
+
+
 
 
 	public String getMaCTXC() {

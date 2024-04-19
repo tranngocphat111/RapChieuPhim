@@ -1,15 +1,16 @@
 package Entity;
 
 import java.sql.Time;
-import java.time.LocalDateTime;
 
 public class XuatChieu {
 	private String maXuatChieu;
 	private Time ThoiGianBatDau;
 	
 	
-	public XuatChieu() {
+	public XuatChieu(String maXuatChieu) {
 		super();
+		this.maXuatChieu = maXuatChieu;
+		
 	}
 
 

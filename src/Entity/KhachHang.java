@@ -10,8 +10,10 @@ public class KhachHang {
 		this.tenKhachHang = tenKhachHang;
 		SDT = sDT;
 	}
-	public KhachHang() {
+	public KhachHang(String maKhachHang) {
+		
 		super();
+		this.maKhachHang = maKhachHang;
 	}
 	public String getMaKhachHang() {
 		return maKhachHang;

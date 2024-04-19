@@ -10,8 +10,9 @@ public class Phong {
 	
 	
 	
-	public Phong() {
+	public Phong(String maPhong) {
 		super();
+		this.maPhong = maPhong;
 	}
 
 

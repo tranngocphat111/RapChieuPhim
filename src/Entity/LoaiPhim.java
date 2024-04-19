@@ -4,8 +4,9 @@ public class LoaiPhim {
 	private String maPhim;
 	private String tenPhim;
 	
-	public LoaiPhim() {
+	public LoaiPhim(String maPhim) {
 		super();
+		this.maPhim = maPhim;
 	}
 
 	public LoaiPhim(String maPhim, String tenPhim) {
