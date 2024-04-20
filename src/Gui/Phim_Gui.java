@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -48,12 +49,6 @@ public class Phim_Gui extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		initComponents();
-		XuatChieuRong_Gui xc = new XuatChieuRong_Gui();
-		xc.setVisible(true);
-		dtXuatChieu.removeAll();
-		dtXuatChieu.add(xc);
-		
 		try {
 			listPhim = phim_dao.printAll();
 			listHinh = hinhAnh_Dao.printAll();
@@ -61,83 +56,73 @@ public class Phim_Gui extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		initComponents();
+		XuatChieuRong_Gui xc = new XuatChieuRong_Gui();
+		xc.setVisible(true);
+		dtXuatChieu.removeAll();
+		dtXuatChieu.add(xc);
+		
+		
 
 		DocDuLieuLenFrame();
-
-		HienListPhimDauTien();
 		setLocationRelativeTo(null);
 	}
 
 	public void DocDuLieuLenFrame() {
-		
-		int soLuongPhim = listPhim.size();
-		for(int i = 1; i <= getSoNut(listPhim.size()); i++) {
-			pListPhim.removeAll();
-			int k = (i - 1) * 4;
-			for(int j = k; j < 4*i;j++) {
-				if(soLuongPhim < 1) {
-					return;
-				}
-				JPanel pPhim = new JPanel();
-				pPhim.setBackground(new java.awt.Color(255, 255, 255));
-				pPhim.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-				pPhim.setPreferredSize(new java.awt.Dimension(213, 293));
+
+		for(Phim p : listPhim) {
+			JPanel pPhim = new JPanel();
+			pPhim.setBackground(new java.awt.Color(255, 255, 255));
+			pPhim.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+			pPhim.setPreferredSize(new java.awt.Dimension(213, 293));
 //				pPhim.addMouseListener(new java.awt.event.MouseAdapter() {
 //	                public void mouseClicked(java.awt.event.MouseEvent evt) {
 //	                    pPhimMouseClicked(evt);
 //	                }
 //				});
-				Phim p = listPhim.get(j);
-				JLabel img_phim = new JLabel();
-				img_phim.setIcon(new javax.swing.ImageIcon(getClass().getResource(p.getHinhAnh().getUrl()))); // NOI18N
-
-				JLabel txt_tenphim = new JLabel();
-				txt_tenphim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-				txt_tenphim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-				txt_tenphim.setText(p.getTenPhim());
-
-				javax.swing.GroupLayout pPhimLayout = new javax.swing.GroupLayout(pPhim);
-				pPhim.setLayout(pPhimLayout);
-				pPhimLayout.setHorizontalGroup(pPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addComponent(img_phim, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-						.addComponent(txt_tenphim, javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-				pPhimLayout.setVerticalGroup(pPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(pPhimLayout.createSequentialGroup().addGap(1, 1, 1)
-								.addComponent(img_phim, javax.swing.GroupLayout.PREFERRED_SIZE, 253,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(txt_tenphim, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-								.addContainerGap()));
-				
-				
-				
-				soLuongPhim--;
-				
-				
-				pListPhim.add(pPhim);
-				
-				
-			}
+			JLabel img_phim = new JLabel();
+			img_phim.setIcon(new javax.swing.ImageIcon(getClass().getResource(p.getHinhAnh().getUrl()))); // NOI18N
 			
-			listPane.add(pListPhim);
-			pListPhim.setVisible(false);
+			JLabel txt_tenphim = new JLabel();
+			txt_tenphim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+			txt_tenphim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+			txt_tenphim.setText(p.getTenPhim());
+			
+			javax.swing.GroupLayout pPhimLayout = new javax.swing.GroupLayout(pPhim);
+			pPhim.setLayout(pPhimLayout);
+			pPhimLayout.setHorizontalGroup(pPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addComponent(img_phim, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+					.addComponent(txt_tenphim, javax.swing.GroupLayout.DEFAULT_SIZE,
+							javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+			pPhimLayout.setVerticalGroup(pPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addGroup(pPhimLayout.createSequentialGroup().addGap(1, 1, 1)
+							.addComponent(img_phim, javax.swing.GroupLayout.PREFERRED_SIZE, 253,
+									javax.swing.GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+							.addComponent(txt_tenphim, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+							.addContainerGap()));
+			
+			
+			pListPhim.add(pPhim);
+			
 		}
+				
+				
+			
+			
+		
 
 		
 	}
 
-	public int getSoNut(int n) {
-		if( n % 4 == 0) {
-			return n / 4;
-		}
-		return n / 4 + 1;
+	public int getRowListPhim(int n) {
+		
+		return n / 2 + n %2;
 		
 	}
 	
-	public void HienListPhimDauTien() {
-		listPane.get(0).setVisible(true);
-	}
+	
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -156,12 +141,9 @@ public class Phim_Gui extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         dtXuatChieu = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
-        btn_num_1 = new javax.swing.JButton();
-        btn_num_2 = new javax.swing.JButton();
-        btn_num_3 = new javax.swing.JButton();
-        pListPhim = new JPanel();
-        
+        jScrollPane1 = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JPanel();
+        pListPhim = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -267,58 +249,31 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        btn_num_1.setText("1");
-        btn_num_1.setBorder(null);
-        btn_num_1.setPreferredSize(new java.awt.Dimension(25, 25));
-        btn_num_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_num_1ActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        btn_num_2.setText("2");
-        btn_num_2.setBorder(null);
-        btn_num_2.setPreferredSize(new java.awt.Dimension(25, 25));
-        btn_num_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_num_2ActionPerformed(evt);
-            }
-        });
+        scroll.setMaximumSize(new java.awt.Dimension(528, 616));
+        
+        pListPhim.setLayout(new java.awt.GridLayout(getRowListPhim(listPhim.size()), 2, 80, 20));
 
-        btn_num_3.setText("3");
-        btn_num_3.setBorder(null);
-        btn_num_3.setPreferredSize(new java.awt.Dimension(25, 25));
-        btn_num_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_num_3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_num_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_num_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_num_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+        javax.swing.GroupLayout scrollLayout = new javax.swing.GroupLayout(scroll);
+        scroll.setLayout(scrollLayout);
+        scrollLayout.setHorizontalGroup(
+            scrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scrollLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(pListPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(592, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_num_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_num_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_num_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        scrollLayout.setVerticalGroup(
+            scrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scrollLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(pListPhim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        pListPhim.setPreferredSize(new java.awt.Dimension(504, 616));
-        pListPhim.setLayout(new java.awt.GridLayout(2, 2, 80, 20));
+        jScrollPane1.setViewportView(scroll);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -326,26 +281,20 @@ public class Phim_Gui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(pListPhim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pXuatChieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(256, 256, 256)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pXuatChieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pListPhim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pXuatChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
@@ -413,17 +362,15 @@ public class Phim_Gui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_num_1;
-    private javax.swing.JButton btn_num_2;
-    private javax.swing.JButton btn_num_3;
     private javax.swing.JDesktopPane dtXuatChieu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pListPhim;
     private javax.swing.JPanel pXuatChieu;
+    private javax.swing.JPanel scroll;
     // End of variables declaration//GEN-END:variables
 }
