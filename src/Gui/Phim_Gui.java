@@ -12,6 +12,10 @@ import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -19,8 +23,10 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConnectDB.ConnectDB;
+import Dao.ChiTietXuatChieu_Dao;
 import Dao.HinhAnh_Dao;
 import Dao.Phim_Dao;
+import Entity.ChiTietXuatChieu;
 import Entity.HinhAnh;
 import Entity.Phim;
 import java.util.logging.Level;
@@ -30,13 +36,15 @@ import java.util.logging.Logger;
  *
  * @author skyga
  */
-public class Phim_Gui extends javax.swing.JFrame {
+public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 
 	private Phim_Dao phim_dao = new Phim_Dao();
 	private ArrayList<Phim> listPhim = new ArrayList<Phim>();
 	private ArrayList<HinhAnh> listHinh = new ArrayList<HinhAnh>();
 	private HinhAnh_Dao hinhAnh_Dao = new HinhAnh_Dao();
-	private ArrayList<JPanel> listPane = new ArrayList<JPanel>();
+	private ArrayList<JPanel> listChonPhim = new ArrayList<JPanel>();
+	private ArrayList<ChiTietXuatChieu> listCTXC = new ArrayList<ChiTietXuatChieu>();
+	private ChiTietXuatChieu_Dao ctxc_dao = new ChiTietXuatChieu_Dao();
 	/**
 	 * Creates new form Ophir
 	 */
@@ -52,13 +60,14 @@ public class Phim_Gui extends javax.swing.JFrame {
 		try {
 			listPhim = phim_dao.printAll();
 			listHinh = hinhAnh_Dao.printAll();
+			listCTXC = ctxc_dao.printAll();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		initComponents();
-		XuatChieuRong_Gui xc = new XuatChieuRong_Gui();
+		XuatChieuMacDinh_Gui xc = new XuatChieuMacDinh_Gui();
 		xc.setVisible(true);
 		dtXuatChieu.removeAll();
 		dtXuatChieu.add(xc);
@@ -68,9 +77,9 @@ public class Phim_Gui extends javax.swing.JFrame {
 		DocDuLieuLenFrame();
 		setLocationRelativeTo(null);
 	}
-
+	
 	public void DocDuLieuLenFrame() {
-
+		int i = 1;
 		for(Phim p : listPhim) {
 			JPanel pPhim = new JPanel();
 			pPhim.setBackground(new java.awt.Color(255, 255, 255));
@@ -104,17 +113,80 @@ public class Phim_Gui extends javax.swing.JFrame {
 							.addContainerGap()));
 			
 			
+			pPhim.setName("" + i++);
+			pPhim.addMouseListener(this);
+//			System.out.println(pPhim.getName());
+			
+			
+			
+			
 			pListPhim.add(pPhim);
-			
+			listChonPhim.add(pPhim);
 		}
+		
+		listChonPhim.forEach((element) -> {
+			element.addMouseListener(new MouseListener() {
 				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
 				
-			
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					System.out.println(element.getName());
+					for(ChiTietXuatChieu ct : listCTXC) {
+						if(ct.getPhim().getMaPhim().equals(element.getName())) {
+							
+							XuatChieu_Gui xc;
+							try {
+								xc = new XuatChieu_Gui(ct);
+								dtXuatChieu.removeAll();
+								xc.setVisible(true);
+								dtXuatChieu.add(xc);
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							
+						}
+					}
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		});
+				
 			
 		
 
 		
-	}
+	
+//	int u = 0;
+//	private void pPhimMouseClicked(java.awt.event.MouseEvent evt) {                                       
+//        // TODO add your handling code here:
+//		System.out.println(listPhim.indexOf(this));
+//		u++;
+//        
+    }
 
 	public int getRowListPhim(int n) {
 		
@@ -155,11 +227,16 @@ public class Phim_Gui extends javax.swing.JFrame {
         jLabel1.setText("DANH SÁCH PHIM");
 
         btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5418737-200 (1).png"))); // NOI18N
-//        btn_back.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                btn_backActionPerformed(evt);
-//            }
-//        });
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+					btn_backActionPerformed(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -217,7 +294,7 @@ public class Phim_Gui extends javax.swing.JFrame {
         );
         dtXuatChieuLayout.setVerticalGroup(
             dtXuatChieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -228,7 +305,7 @@ public class Phim_Gui extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dtXuatChieu)
+            .addComponent(dtXuatChieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout pXuatChieuLayout = new javax.swing.GroupLayout(pXuatChieu);
@@ -245,16 +322,15 @@ public class Phim_Gui extends javax.swing.JFrame {
             .addGroup(pXuatChieuLayout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(25);
         scroll.setMaximumSize(new java.awt.Dimension(528, 616));
-        
-        pListPhim.setLayout(new java.awt.GridLayout(getRowListPhim(listPhim.size()), 2, 80, 20));
+
+        pListPhim.setLayout(new java.awt.GridLayout(4, 2, 80, 20));
 
         javax.swing.GroupLayout scrollLayout = new javax.swing.GroupLayout(scroll);
         scroll.setLayout(scrollLayout);
@@ -294,9 +370,10 @@ public class Phim_Gui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pXuatChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
-
+        
+       
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -318,6 +395,8 @@ public class Phim_Gui extends javax.swing.JFrame {
 		setVisible(false);
 	}// GEN-LAST:event_btn_backActionPerformed
 
+	
+	  
 	/**
 	 * @param args the command line arguments
 	 */
@@ -373,4 +452,40 @@ public class Phim_Gui extends javax.swing.JFrame {
     private javax.swing.JPanel pXuatChieu;
     private javax.swing.JPanel scroll;
     // End of variables declaration//GEN-END:variables
+	@Override
+	public void mouseClicked(MouseEvent e) {
+////		System.out.println(listChonPhim.get(i).);
+//		XuatChieu_Gui gui  = new XuatChieu_Gui(new ChiTietXuatChieu("123"));
+//		dtXuatChieu.removeAll();
+//		gui.setVisible(true);
+//		dtXuatChieu.add(gui);			
+//		System.out.println(scroll.getComponents().getClass());
+//		// TODO Auto-generated method stub
+//		
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

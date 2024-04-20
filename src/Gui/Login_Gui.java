@@ -4,6 +4,7 @@
  */
 package Gui;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,7 +23,8 @@ import Entity.TaiKhoan;
  * @author skyga
  */
 public class Login_Gui extends javax.swing.JFrame {
-
+	private ArrayList<TaiKhoan> listTK  = new ArrayList<TaiKhoan>();
+	private TaiKhoan_Dao tk_dao = new TaiKhoan_Dao();
     /**
      * Creates new form Login_2
      * @throws SQLException 
@@ -70,6 +72,11 @@ public class Login_Gui extends javax.swing.JFrame {
 
         jPanel13.setBackground(new java.awt.Color(217, 217, 217));
         jPanel13.setPreferredSize(new java.awt.Dimension(455, 361));
+        jPanel13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel13KeyPressed(evt);
+            }
+        });
 
         jPanel14.setBackground(new java.awt.Color(255, 169, 89));
 
@@ -287,6 +294,7 @@ public class Login_Gui extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_LoginActionPerformed
+     
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -296,6 +304,49 @@ public class Login_Gui extends javax.swing.JFrame {
     private void txtTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaiKhoanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTaiKhoanActionPerformed
+
+    private void jPanel13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel13KeyPressed
+        // TODO add your handling code here:
+          if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        	if (txtTaiKhoan.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Tên đăng nhập rỗng", "TenDangNhapRong", JOptionPane.ERROR_MESSAGE);
+                txtTaiKhoan.requestFocus();
+            }
+            else{
+                if(txtPass.getText().equals("")){
+                    JOptionPane.showMessageDialog(this, "Mật khẩu rỗng", "MatKhauRong", JOptionPane.ERROR_MESSAGE);
+                    txtPass.requestFocus();
+                }
+                else {
+                    if(!KtraTK(txtTaiKhoan.getText())){
+                        JOptionPane.showMessageDialog(this, "Tên đăng nhập sai", "TenDangNhapSai", JOptionPane.ERROR_MESSAGE);
+                        txtTaiKhoan.requestFocus();
+                        return;
+                    }
+                    else {
+                    	
+                        if(!KtraMK(txtPass.getText())){
+                            JOptionPane.showMessageDialog(this, "Mật khẩu sai", "MatKhauSai", JOptionPane.ERROR_MESSAGE);
+                            txtPass.requestFocus();
+                
+                            return;
+                        }
+                        else {
+                        	
+                        	if(Ktra(txtPass.getText(),txtTaiKhoan.getText())){
+                        		new Phim_Gui().setVisible(true);
+                        		setVisible(false);
+                        	}else {
+                        		JOptionPane.showMessageDialog(this, "Mật khẩu sai", "MatKhauSai", JOptionPane.ERROR_MESSAGE);
+                                txtPass.requestFocus();
+                
+                                return;
+                        	}
+                            
+                            
+                        }}}}
+        }
+    }//GEN-LAST:event_jPanel13KeyPressed
 
     /**
      * @param args the command line arguments
@@ -341,8 +392,6 @@ public class Login_Gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ArrayList<TaiKhoan> listTK = new ArrayList<TaiKhoan>();
-    private TaiKhoan_Dao tk_dao = new TaiKhoan_Dao();
     private javax.swing.JButton Login;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
