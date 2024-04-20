@@ -25,12 +25,13 @@ public class Login_Gui extends javax.swing.JFrame {
 
     /**
      * Creates new form Login_2
+     * @throws SQLException 
      */
 
 	
 	
 	
-    public Login_Gui() {
+    public Login_Gui() throws SQLException {
         
         initComponents();
         try {
@@ -329,7 +330,12 @@ public class Login_Gui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login_Gui().setVisible(true);
+                try {
+					new Login_Gui().setVisible(true);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
     }

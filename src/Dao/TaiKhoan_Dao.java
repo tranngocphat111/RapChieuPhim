@@ -17,13 +17,13 @@ public class TaiKhoan_Dao {
 		
 	}
 	
-	public ArrayList<TaiKhoan> printAll() { 
+	public ArrayList<TaiKhoan> printAll() throws SQLException { 
 		ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
 		ConnectDB.getInstance();
 		Connection con = ConnectDB.getCon();
-
+		java.sql.Statement state = null;
 		try {
-			java.sql.Statement state = con.createStatement();
+			state = con.createStatement();
 			ResultSet rs = state.executeQuery("Select * from TaiKhoan");
 			while(rs.next()) {
 				String tenTaiKhoan = rs.getString(1);
@@ -41,7 +41,7 @@ public class TaiKhoan_Dao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		state.close();
 		return list;
 				
 	}
