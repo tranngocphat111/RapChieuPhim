@@ -37,7 +37,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     	ConnectDB.Connect();
         initComponents(CTXC);
         
-       
+      
         try {
 			listGhe = ghe_dao.printAll();
 			 listCTGhe = ctGhe_dao.printAll();
@@ -48,6 +48,27 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 		}
         
         setLocationRelativeTo(null);
+    }
+    
+    public void DocDuLieuCTGheLenFrame (){
+    	for(Ghe ghe : listGhe) {
+    		for(ChiTietGhe ct: listCTGhe) {
+    			
+    			if(ghe.getMaGhe().equals(ct.getGhe().getMaGhe())) {
+    				for(JButton btn : listButton) {
+    					if(ghe.getMaGhe().equals(btn.getName())) {
+    						btn.setEnabled(false);
+    						btn.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+    						btn.setText("X");
+    						System.out.println(btn.getName());
+    						
+    					}
+    					System.out.println(btn.getName());
+    					
+    				}
+    			}
+    		}
+    	}
     }
     
     
@@ -61,31 +82,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    
-    public void DocDuLieuCTGheLenFrame (){
-    	for(Ghe ghe : listGhe) {
-    		for(ChiTietGhe ct: listCTGhe) {
-    			
-    			if(ghe.getMaGhe().equals(ct.getGhe().getMaGhe())) {
-    				for(JButton btn : listButton) {
-    					if(ghe.getMaGhe().equals(btn.getName())) {
-    						btn.setEnabled(false);
-    						btn.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    						
-    						btn.setText("X");
-    						System.out.println(btn.getName());
-    					}
-    					
-    				}
-    			}
-    		}
-    	}
-    }
-    
-    
-    
-    
-    
     private void initComponents(ChiTietXuatChieu CTXC) {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
@@ -100,24 +96,24 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         A6 = new javax.swing.JButton();
         A7 = new javax.swing.JButton();
         A8 = new javax.swing.JButton();
-        A9 = new javax.swing.JButton();
         A10 = new javax.swing.JButton();
         A11 = new javax.swing.JButton();
         A12 = new javax.swing.JButton();
+        A9 = new javax.swing.JButton();
         A13 = new javax.swing.JButton();
-        B1 = new javax.swing.JButton();
-        B2 = new javax.swing.JButton();
-        B3 = new javax.swing.JButton();
-        B4 = new javax.swing.JButton();
-        B5 = new javax.swing.JButton();
         B6 = new javax.swing.JButton();
         B7 = new javax.swing.JButton();
         B8 = new javax.swing.JButton();
-        B9 = new javax.swing.JButton();
         B10 = new javax.swing.JButton();
         B11 = new javax.swing.JButton();
         B12 = new javax.swing.JButton();
+        B1 = new javax.swing.JButton();
+        B9 = new javax.swing.JButton();
+        B2 = new javax.swing.JButton();
+        B3 = new javax.swing.JButton();
         B13 = new javax.swing.JButton();
+        B4 = new javax.swing.JButton();
+        B5 = new javax.swing.JButton();
         C1 = new javax.swing.JButton();
         C2 = new javax.swing.JButton();
         C3 = new javax.swing.JButton();
@@ -198,12 +194,17 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        Radio_NguoiLon = new javax.swing.JRadioButton();
-        Radio_TreEm = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         TxtSoLuong = new javax.swing.JTextField();
-        TxtGiaVe = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         check_KHThanhVien = new javax.swing.JCheckBox();
@@ -256,7 +257,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        
+
         A1.setName("A1");
         A2.setName("A2");
         A3.setName("A3");
@@ -358,7 +359,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         H7H8.setName("H7H8");
         H9H10.setName("H9H10");
         H11H12.setName("H11H12");
-
+        
         listButton.add(A1);
         listButton.add(A2);
         listButton.add(A3);
@@ -462,7 +463,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         
         A1.setBackground(new java.awt.Color(192, 119, 180));
         A1.setText("A1");
-   
         A1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A1ActionPerformed(evt);
@@ -471,7 +471,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A2.setBackground(new java.awt.Color(192, 119, 180));
         A2.setText("A2");
-        
         A2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A2ActionPerformed(evt);
@@ -480,7 +479,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A3.setBackground(new java.awt.Color(192, 119, 180));
         A3.setText("A3");
-        
         A3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A3ActionPerformed(evt);
@@ -489,7 +487,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A4.setBackground(new java.awt.Color(192, 119, 180));
         A4.setText("A4");
-        
         A4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A4ActionPerformed(evt);
@@ -498,7 +495,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A5.setBackground(new java.awt.Color(192, 119, 180));
         A5.setText("A5");
-       
         A5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A5ActionPerformed(evt);
@@ -507,7 +503,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A6.setBackground(new java.awt.Color(192, 119, 180));
         A6.setText("A6");
-       
         A6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A6ActionPerformed(evt);
@@ -516,7 +511,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A7.setBackground(new java.awt.Color(192, 119, 180));
         A7.setText("A7");
-        
         A7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A7ActionPerformed(evt);
@@ -531,16 +525,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
             }
         });
 
-        A9.setBackground(new java.awt.Color(192, 119, 180));
-        A9.setText("A10");
-        A9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A9ActionPerformed(evt);
-            }
-        });
-
         A10.setBackground(new java.awt.Color(192, 119, 180));
-        A10.setText("A11");
+        A10.setText("A10");
         A10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A10ActionPerformed(evt);
@@ -548,7 +534,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         A11.setBackground(new java.awt.Color(192, 119, 180));
-        A11.setText("A12");
+        A11.setText("A11");
         A11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A11ActionPerformed(evt);
@@ -556,10 +542,18 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         A12.setBackground(new java.awt.Color(192, 119, 180));
-        A12.setText("A9");
+        A12.setText("A12");
         A12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A12ActionPerformed(evt);
+            }
+        });
+
+        A9.setBackground(new java.awt.Color(192, 119, 180));
+        A9.setText("A9");
+        A9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                A9ActionPerformed(evt);
             }
         });
 
@@ -571,48 +565,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
             }
         });
 
-        B1.setBackground(new java.awt.Color(192, 119, 180));
-        B1.setText("B6");
-        B1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B1ActionPerformed(evt);
-            }
-        });
-
-        B2.setBackground(new java.awt.Color(192, 119, 180));
-        B2.setText("B7");
-        B2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B2ActionPerformed(evt);
-            }
-        });
-
-        B3.setBackground(new java.awt.Color(192, 119, 180));
-        B3.setText("B8");
-        B3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B3ActionPerformed(evt);
-            }
-        });
-
-        B4.setBackground(new java.awt.Color(192, 119, 180));
-        B4.setText("B10");
-        B4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B4ActionPerformed(evt);
-            }
-        });
-
-        B5.setBackground(new java.awt.Color(192, 119, 180));
-        B5.setText("B11");
-        B5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B5ActionPerformed(evt);
-            }
-        });
-
         B6.setBackground(new java.awt.Color(192, 119, 180));
-        B6.setText("B12");
+        B6.setText("B6");
         B6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B6ActionPerformed(evt);
@@ -620,7 +574,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         B7.setBackground(new java.awt.Color(192, 119, 180));
-        B7.setText("B1");
+        B7.setText("B7");
         B7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B7ActionPerformed(evt);
@@ -628,23 +582,15 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         B8.setBackground(new java.awt.Color(192, 119, 180));
-        B8.setText("B9");
+        B8.setText("B8");
         B8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B8ActionPerformed(evt);
             }
         });
 
-        B9.setBackground(new java.awt.Color(192, 119, 180));
-        B9.setText("B2");
-        B9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B9ActionPerformed(evt);
-            }
-        });
-
         B10.setBackground(new java.awt.Color(192, 119, 180));
-        B10.setText("B3");
+        B10.setText("B10");
         B10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B10ActionPerformed(evt);
@@ -652,7 +598,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         B11.setBackground(new java.awt.Color(192, 119, 180));
-        B11.setText("B13");
+        B11.setText("B11");
         B11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B11ActionPerformed(evt);
@@ -660,18 +606,66 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         B12.setBackground(new java.awt.Color(192, 119, 180));
-        B12.setText("B4");
+        B12.setText("B12");
         B12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B12ActionPerformed(evt);
             }
         });
 
+        B1.setBackground(new java.awt.Color(192, 119, 180));
+        B1.setText("B1");
+        B1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B1ActionPerformed(evt);
+            }
+        });
+
+        B9.setBackground(new java.awt.Color(192, 119, 180));
+        B9.setText("B9");
+        B9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B9ActionPerformed(evt);
+            }
+        });
+
+        B2.setBackground(new java.awt.Color(192, 119, 180));
+        B2.setText("B2");
+        B2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B2ActionPerformed(evt);
+            }
+        });
+
+        B3.setBackground(new java.awt.Color(192, 119, 180));
+        B3.setText("B3");
+        B3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B3ActionPerformed(evt);
+            }
+        });
+
         B13.setBackground(new java.awt.Color(192, 119, 180));
-        B13.setText("B5");
+        B13.setText("B13");
         B13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B13ActionPerformed(evt);
+            }
+        });
+
+        B4.setBackground(new java.awt.Color(192, 119, 180));
+        B4.setText("B4");
+        B4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B4ActionPerformed(evt);
+            }
+        });
+
+        B5.setBackground(new java.awt.Color(192, 119, 180));
+        B5.setText("B5");
+        B5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B5ActionPerformed(evt);
             }
         });
 
@@ -1266,7 +1260,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         jLabel15.setText("Ghế Thường");
 
         jLabel16.setText("Ghế bạn chọn");
-        
+
         jButton5.setBackground(new java.awt.Color(223, 13, 13));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1275,12 +1269,12 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         jLabel17.setText("Ghế đã đặt");
-        
+
         jButton6.setBackground(new java.awt.Color(204, 204, 204));
-        jButton6.setEnabled(false);
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         jButton6.setForeground(new java.awt.Color(102, 102, 102));
         jButton6.setText("X");
+        jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -1289,7 +1283,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-       // jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
+//        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1316,13 +1310,13 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                     .addGroup(GheLayout.createSequentialGroup()
                         .addGroup(GheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(GheLayout.createSequentialGroup()
-                                .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(GheLayout.createSequentialGroup()
                                 .addComponent(A1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1334,7 +1328,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(GheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(A5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(B13, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(GheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(GheLayout.createSequentialGroup()
@@ -1344,31 +1338,31 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(A8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(A12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(A9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(GheLayout.createSequentialGroup()
-                                .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(B8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(B9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(GheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(GheLayout.createSequentialGroup()
-                                .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B12, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(B13, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(GheLayout.createSequentialGroup()
-                                .addComponent(A9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(A10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(A10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(A11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(A12, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(A13, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(GheLayout.createSequentialGroup()
@@ -1542,26 +1536,26 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                             .addComponent(A6)
                             .addComponent(A7)
                             .addComponent(A8)
-                            .addComponent(A12)
                             .addComponent(A9)
                             .addComponent(A10)
                             .addComponent(A11)
+                            .addComponent(A12)
                             .addComponent(A13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(GheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(B7)
-                            .addComponent(B9)
-                            .addComponent(B10)
-                            .addComponent(B12)
-                            .addComponent(B13)
                             .addComponent(B1)
                             .addComponent(B2)
                             .addComponent(B3)
-                            .addComponent(B8)
                             .addComponent(B4)
                             .addComponent(B5)
                             .addComponent(B6)
-                            .addComponent(B11))
+                            .addComponent(B7)
+                            .addComponent(B8)
+                            .addComponent(B9)
+                            .addComponent(B10)
+                            .addComponent(B11)
+                            .addComponent(B12)
+                            .addComponent(B13))
                         .addGroup(GheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(GheLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -1687,16 +1681,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(341, 224));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Loại vé:");
-
-        Radio_NguoiLon.setText("Trẻ em");
-        Radio_NguoiLon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Radio_NguoiLonActionPerformed(evt);
-            }
-        });
-
-        Radio_TreEm.setText("Người lớn");
+        jLabel2.setText("Ghế:");
 
         jLabel3.setText("Số lượng:");
 
@@ -1705,58 +1690,122 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                 TxtSoLuongActionPerformed(evt);
             }
         });
+        
 
-        TxtGiaVe.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setBackground(new java.awt.Color(255, 169, 89));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtGiaVeActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Giá vé:");
+        jLabel19.setText("65.000 VND");
+
+        jButton9.setBackground(new java.awt.Color(255, 51, 153));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("80.000 VND");
+
+        jLabel21.setText("150.000 VND");
+
+        jButton7.setBackground(new java.awt.Color(192, 119, 180));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setBackground(new java.awt.Color(192, 119, 180));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setBackground(new java.awt.Color(255, 51, 153));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setBackground(new java.awt.Color(255, 169, 89));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(Radio_TreEm, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Radio_NguoiLon, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtGiaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(91, Short.MAX_VALUE))
+                                .addComponent(TxtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(9, 9, 9)
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                                .addGap(11, 11, 11)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                        .addGap(21, 21, 21))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Radio_TreEm)
-                    .addComponent(Radio_NguoiLon))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TxtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TxtGiaVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(TxtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(24, 24, 24))
         );
 
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -1936,7 +1985,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TxtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(20, 20, 20))
         );
@@ -1954,9 +2003,9 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
         );
 
         btn_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5418737-200 (1).png"))); // NOI18N
@@ -1986,21 +2035,12 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Radio_NguoiLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_NguoiLonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Radio_NguoiLonActionPerformed
 
     private void TxtSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtSoLuongActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtSoLuongActionPerformed
-
-    private void TxtGiaVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtGiaVeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtGiaVeActionPerformed
 
     private void check_KHThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_KHThanhVienActionPerformed
         // TODO add your handling code here:
@@ -2314,9 +2354,33 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_C1ActionPerformed
 
+    private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B5ActionPerformed
+
+    private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B4ActionPerformed
+
     private void B13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B13ActionPerformed
+
+    private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B3ActionPerformed
+
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B2ActionPerformed
+
+    private void B9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B9ActionPerformed
+
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B1ActionPerformed
 
     private void B12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B12ActionPerformed
         // TODO add your handling code here:
@@ -2330,10 +2394,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_B10ActionPerformed
 
-    private void B9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B9ActionPerformed
-
     private void B8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B8ActionPerformed
@@ -2346,29 +2406,13 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_B6ActionPerformed
 
-    private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B5ActionPerformed
-
-    private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B4ActionPerformed
-
-    private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B3ActionPerformed
-
-    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B2ActionPerformed
-
-    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B1ActionPerformed
-
     private void A13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_A13ActionPerformed
+
+    private void A9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_A9ActionPerformed
 
     private void A12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A12ActionPerformed
         // TODO add your handling code here:
@@ -2381,10 +2425,6 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     private void A10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_A10ActionPerformed
-
-    private void A9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A9ActionPerformed
 
     private void A8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A8ActionPerformed
         // TODO add your handling code here:
@@ -2430,6 +2470,30 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_BackActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     
     /**
@@ -2565,11 +2629,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     private javax.swing.JButton H5H6;
     private javax.swing.JButton H7H8;
     private javax.swing.JButton H9H10;
-    private javax.swing.JRadioButton Radio_NguoiLon;
-    private javax.swing.JRadioButton Radio_TreEm;
     private javax.swing.JTextField TxtDiemCongThem;
     private javax.swing.JTextField TxtDiemTichLuy;
-    private javax.swing.JTextField TxtGiaVe;
     private javax.swing.JTextField TxtMaKH;
     private javax.swing.JTextField TxtSoLuong;
     private javax.swing.JTextField TxtSoTienGiam;
@@ -2579,11 +2640,17 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     private javax.swing.JButton btn_Back;
     private javax.swing.JCheckBox check_KHThanhVien;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2595,9 +2662,11 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
