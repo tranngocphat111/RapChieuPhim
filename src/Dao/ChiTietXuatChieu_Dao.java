@@ -48,10 +48,10 @@ public class ChiTietXuatChieu_Dao {
 				 LocalDate ngayPhatHang = LocalDate.parse(rs.getDate(13).toString());
 				 String maAnh = rs.getString(14);
 				 XuatChieu xc =  new XuatChieu(maXC, thoiGianBatDau);
-				 Phong phong = new Phong(MaPhong, soPhong, maAnh, soLuonGheDat, SoLuongGheTrong, SOluongGhe);
+				 Phong phong = new Phong(MaPhong, soPhong, SOluongGhe);
 				 HinhAnh hinhanh = new HinhAnh(maAnh);
 				 Phim phim = new Phim(MaPhim, new LoaiPhim(maLoai), tenPhim, thoiLuong, ngayPhatHang, hinhanh);
-				 ChiTietXuatChieu ct = new ChiTietXuatChieu(MaCTXC, xc, phim, phong);
+				 ChiTietXuatChieu ct = new ChiTietXuatChieu(MaCTXC, xc, phim, phong,soLuonGheDat,SoLuongGheTrong);
 				 
 				 list.add(ct);
 			}

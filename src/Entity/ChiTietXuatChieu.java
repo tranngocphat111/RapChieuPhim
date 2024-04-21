@@ -4,6 +4,8 @@ public class ChiTietXuatChieu {
 	private XuatChieu xuatChieu;
 	private Phim phim;
 	private Phong phong;
+	private int SoLuongGheDat;
+	private int SoLuongGheTrong;
 	
 	
 	public ChiTietXuatChieu(String maCTXC) {
@@ -12,23 +14,18 @@ public class ChiTietXuatChieu {
 	}
 
 
-	
-
-
-	public Phong getPhong() {
-		return phong;
-	}
-
-
-
-
-
-	public void setPhong(Phong phong) {
+	public ChiTietXuatChieu(String maCTXC, XuatChieu xuatChieu, Phim phim, Phong phong, int soLuongGheDat,
+			int soLuongGheTrong) {
+		super();
+		this.maCTXC = maCTXC;
+		this.xuatChieu = xuatChieu;
+		this.phim = phim;
 		this.phong = phong;
+		SoLuongGheDat = soLuongGheDat;
+		SoLuongGheTrong = soLuongGheTrong;
 	}
-
-
-
+	
+	
 
 
 	public ChiTietXuatChieu(String maCTXC, XuatChieu xuatChieu, Phim phim, Phong phong) {
@@ -38,9 +35,6 @@ public class ChiTietXuatChieu {
 		this.phim = phim;
 		this.phong = phong;
 	}
-
-
-
 
 
 	public String getMaCTXC() {
@@ -71,8 +65,41 @@ public class ChiTietXuatChieu {
 	public void setPhim(Phim phim) {
 		this.phim = phim;
 	}
+
+
+	public Phong getPhong() {
+		return phong;
+	}
+
+
+	public void setPhong(Phong phong) {
+		this.phong = phong;
+	}
+
+
+	public int getSoLuongGheDat() {
+		return SoLuongGheDat;
+	}
+
+
+	public void setSoLuongGheDat(int soLuongGheDat) {
+		SoLuongGheDat = soLuongGheDat;
+	}
+
+
+	public int getSoLuongGheTrong() {
+		return SoLuongGheTrong;
+	}
+
+
+	public void setSoLuongGheTrong(int soLuongGheTrong) {
+		SoLuongGheTrong = soLuongGheTrong;
+	}
+
 	
 	
 	
-	
+
+
+
 }

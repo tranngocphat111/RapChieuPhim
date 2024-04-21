@@ -4,6 +4,8 @@
  */
 package Gui;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -28,6 +30,7 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 	private ChiTietXuatChieu_Dao ctxc_dao = new ChiTietXuatChieu_Dao();
 	private JLabel jLabel1;
 	private JButton btn_suatchieu1;
+	private ArrayList<JPanel> listPaneXC = new ArrayList<JPanel>();
 	
     public XuatChieu_Gui() throws SQLException {
     	
@@ -60,17 +63,63 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
         	}
         }
         
+        listPaneXC.forEach((element) -> {
+			element.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					System.out.println(element.getName());
+					for(ChiTietXuatChieu ct : listCTXC) {
+						if(ct.getMaCTXC().equals(element.getName())) {
+							new ChonGhe_Gui(ct);
+							
+						}
+					}
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		});
+				
+        
+				
+        
         
         
         ui.setNorthPane(null);
     }
     
     
+    
+    
     public void DocDuLieuLenFrame(ChiTietXuatChieu CTXT) {
     	JPanel pXC2 = new JPanel();
     	jLabel1 = new JLabel();
     	btn_suatchieu1 = new JButton();
-    	String soCho = Integer.toString(CTXT.getPhong().getSoluongGheDat()) + "/" + Integer.toString(CTXT.getPhong().getSoLuongGhe()) + " Ghế";
+    	String soCho = Integer.toString(CTXT.getSoLuongGheDat()) + "/" + Integer.toString(CTXT.getPhong().getSoLuongGhe()) + " Ghế";
     	jLabel1.setText(soCho);
     	btn_suatchieu1.setText(CTXT.getXuatChieu().getThoiGianBatDau().toString()) ;
     	javax.swing.GroupLayout pXC2Layout = new javax.swing.GroupLayout(pXC2);
@@ -94,9 +143,16 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_suatchieu1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
+        
+        
+        pXC2.setName(CTXT.getMaCTXC());
+        System.out.println(pXC2.getName());
+        listPaneXC.add(pXC2);
         pListXC.add(pXC2);
     }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,8 +166,10 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 		return n / 2 + n %2;
 		
 	}
+    
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents(ChiTietXuatChieu CTXC) {
+    private void initComponents(ChiTietXuatChieu CTXC) throws SQLException {
 
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -128,7 +186,7 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 
         pScroll.setPreferredSize(new java.awt.Dimension(370, 548));
 
-        pListXC.setLayout(new java.awt.GridLayout(2, 2, 40, 20));
+        pListXC.setLayout(new java.awt.GridLayout(getRowListXC(demSLXC(CTXC)), 2, 40, 20));
 
         javax.swing.GroupLayout pScrollLayout = new javax.swing.GroupLayout(pScroll);
         pScroll.setLayout(pScrollLayout);

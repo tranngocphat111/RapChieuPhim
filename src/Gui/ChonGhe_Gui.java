@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import Entity.ChiTietGhe;
+import Entity.ChiTietXuatChieu;
 
 /**
  *
@@ -18,8 +19,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     /**
      * Creates new form ChonGhe
      */
-    public ChonGhe_Gui() {
-        initComponents();
+    public ChonGhe_Gui(ChiTietXuatChieu CTXC) {
+        initComponents(CTXC);
         setLocationRelativeTo(null);
     }
 
@@ -30,7 +31,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(ChiTietXuatChieu CTXC) {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         Ghe = new javax.swing.JPanel();
@@ -1053,7 +1054,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
+       // jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2292,7 +2293,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChonGhe_Gui().setVisible(true);
+                new ChonGhe_Gui(new ChiTietXuatChieu(null)).setVisible(true);
             }
         });
     }
