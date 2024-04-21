@@ -47,9 +47,10 @@ public class ChiTietXuatChieu_Dao {
 				 int thoiLuong = rs.getInt(12);
 				 LocalDate ngayPhatHang = LocalDate.parse(rs.getDate(13).toString());
 				 String maAnh = rs.getString(14);
+				 String url = rs.getString(15);
 				 XuatChieu xc =  new XuatChieu(maXC, thoiGianBatDau);
 				 Phong phong = new Phong(MaPhong, soPhong, SOluongGhe);
-				 HinhAnh hinhanh = new HinhAnh(maAnh);
+				 HinhAnh hinhanh = new HinhAnh(maAnh,url);
 				 Phim phim = new Phim(MaPhim, new LoaiPhim(maLoai), tenPhim, thoiLuong, ngayPhatHang, hinhanh);
 				 ChiTietXuatChieu ct = new ChiTietXuatChieu(MaCTXC, xc, phim, phong,soLuonGheDat,SoLuongGheTrong);
 				 

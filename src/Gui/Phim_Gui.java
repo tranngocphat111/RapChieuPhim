@@ -5,22 +5,32 @@
 package Gui;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import ConnectDB.ConnectDB;
 import Dao.ChiTietXuatChieu_Dao;
@@ -36,7 +46,7 @@ import java.util.logging.Logger;
  *
  * @author skyga
  */
-public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
+public class Phim_Gui extends javax.swing.JFrame implements MouseListener,ActionListener {
 
 	private Phim_Dao phim_dao = new Phim_Dao();
 	private ArrayList<Phim> listPhim = new ArrayList<Phim>();
@@ -66,6 +76,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 			e.printStackTrace();
 		}
 		
+		
 		initComponents();
 		XuatChieuMacDinh_Gui xc = new XuatChieuMacDinh_Gui();
 		xc.setVisible(true);
@@ -76,7 +87,9 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 
 		DocDuLieuLenFrame();
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
+	
 	
 	public void DocDuLieuLenFrame() {
 		int i = 1;
@@ -85,11 +98,6 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 			pPhim.setBackground(new java.awt.Color(255, 255, 255));
 			pPhim.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 			pPhim.setPreferredSize(new java.awt.Dimension(213, 293));
-//				pPhim.addMouseListener(new java.awt.event.MouseAdapter() {
-//	                public void mouseClicked(java.awt.event.MouseEvent evt) {
-//	                    pPhimMouseClicked(evt);
-//	                }
-//				});
 			JLabel img_phim = new JLabel();
 			img_phim.setIcon(new javax.swing.ImageIcon(getClass().getResource(p.getHinhAnh().getUrl()))); // NOI18N
 			
@@ -119,7 +127,6 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 			
 			
 			
-			
 			pListPhim.add(pPhim);
 			listChonPhim.add(pPhim);
 		}
@@ -136,7 +143,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 				@Override
 				public void mousePressed(MouseEvent e) {
 					// TODO Auto-generated method stub
-					System.out.println(element.getName());
+					
 					for(ChiTietXuatChieu ct : listCTXC) {
 						if(ct.getPhim().getMaPhim().equals(element.getName())) {
 							
@@ -146,6 +153,8 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 								dtXuatChieu.removeAll();
 								xc.setVisible(true);
 								dtXuatChieu.add(xc);
+								
+								
 							} catch (SQLException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -180,14 +189,11 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 		
 		
 	
-//	int u = 0;
-//	private void pPhimMouseClicked(java.awt.event.MouseEvent evt) {                                       
-//        // TODO add your handling code here:
-//		System.out.println(listPhim.indexOf(this));
-//		u++;
-//        
+       
     }
 
+	
+	
 	public int getRowListPhim(int n) {
 		
 		return n / 2 + n %2;
@@ -389,7 +395,6 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         
-       
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -451,6 +456,9 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 			@Override
 			public void run() {
 				new Phim_Gui().setVisible(true);
+				SwingUtilities.invokeLater(() -> {
+					
+				});
 			}
 		});
 	}
@@ -468,18 +476,15 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
     private javax.swing.JPanel pXuatChieu;
     private javax.swing.JPanel scroll;
     // End of variables declaration//GEN-END:variables
+    
+   
 	@Override
 	public void mouseClicked(MouseEvent e) {
-////		System.out.println(listChonPhim.get(i).);
-//		XuatChieu_Gui gui  = new XuatChieu_Gui(new ChiTietXuatChieu("123"));
-//		dtXuatChieu.removeAll();
-//		gui.setVisible(true);
-//		dtXuatChieu.add(gui);			
-//		System.out.println(scroll.getComponents().getClass());
-//		// TODO Auto-generated method stub
+
 //		
 		
 	}
+
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -503,5 +508,14 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener {
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+//		if(e.getSource().equals()) {
+//			
+//		}
 	}
 }

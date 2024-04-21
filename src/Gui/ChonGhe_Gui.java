@@ -23,6 +23,7 @@ import Entity.ChiTietXuatChieu;
  */
 public class ChonGhe_Gui extends javax.swing.JFrame {
 	private ArrayList<ChiTietGhe> listCTGhe = new ArrayList<ChiTietGhe>();
+	private ArrayList<ChiTietGhe> listCTGheTheoPhong = new ArrayList<ChiTietGhe>();
 	private ChiTietGhe_Dao ctGhe_dao = new ChiTietGhe_Dao();
 	
 	private ArrayList<Ghe> listGhe = new ArrayList<Ghe>();
@@ -37,22 +38,26 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     	ConnectDB.Connect();
         initComponents(CTXC);
         
-      
+        
+       
+        
         try {
 			listGhe = ghe_dao.printAll();
 			 listCTGhe = ctGhe_dao.printAll();
-			 DocDuLieuCTGheLenFrame();
+//			 DocDuLieuCTGheLenFrame();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        docDuLieuGheTheoPhongXClenFrame(CTXC);
+        DocDuLieuCTGheLenFrame();
         
         setLocationRelativeTo(null);
     }
     
-    public void DocDuLieuCTGheLenFrame (){
+    public void DocDuLieuCTGheLenFrame (){	
     	for(Ghe ghe : listGhe) {
-    		for(ChiTietGhe ct: listCTGhe) {
+    		for(ChiTietGhe ct: listCTGheTheoPhong) {
     			
     			if(ghe.getMaGhe().equals(ct.getGhe().getMaGhe())) {
     				for(JButton btn : listButton) {
@@ -60,13 +65,20 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     						btn.setEnabled(false);
     						btn.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
     						btn.setText("X");
-    						System.out.println(btn.getName());
     						
     					}
-    					System.out.println(btn.getName());
     					
     				}
     			}
+    		}
+    	}
+    }
+    
+    public void docDuLieuGheTheoPhongXClenFrame(ChiTietXuatChieu CTXC){
+    	for(ChiTietGhe ctg : listCTGhe) {
+    		if(CTXC.getMaCTXC().equals(ctg.getCTXC().getMaCTXC())) {
+    			listCTGheTheoPhong.add(ctg);	
+    			
     		}
     	}
     }
@@ -1283,7 +1295,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-//        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doraemon.jpg"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource(CTXC.getPhim().getHinhAnh().getUrl()))); // NOI18N
+        
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2469,6 +2482,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
     private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackActionPerformed
         // TODO add your handling code here:
+    	new Phim_Gui().setVisible(true);;
+    	setVisible(false);
     }//GEN-LAST:event_btn_BackActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

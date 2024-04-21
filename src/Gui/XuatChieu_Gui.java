@@ -4,6 +4,7 @@
  */
 package Gui;
 
+import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -30,9 +32,9 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 	private ChiTietXuatChieu_Dao ctxc_dao = new ChiTietXuatChieu_Dao();
 	private JLabel jLabel1;
 	private JButton btn_suatchieu1;
-	private ArrayList<JPanel> listPaneXC = new ArrayList<JPanel>();
-	
-    public XuatChieu_Gui() throws SQLException {
+	private ArrayList<JButton> listbtnXC = new ArrayList<JButton>();
+	private static Component parentComponent;
+    public XuatChieu_Gui(Component parentComponent) throws SQLException {
     	
         initComponents(new ChiTietXuatChieu("123"));
         this.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
@@ -51,6 +53,7 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
          }
     	 return dem;
     }
+    static boolean closeFrame = true;
     
     public XuatChieu_Gui(ChiTietXuatChieu CTXT) throws SQLException {
     	listCTXC = ctxc_dao.printAll();
@@ -63,7 +66,9 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
         	}
         }
         
-        listPaneXC.forEach((element) -> {
+        
+       
+        listbtnXC.forEach((element) -> {
 			element.addMouseListener(new MouseListener() {
 				
 				@Override
@@ -79,7 +84,8 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 					for(ChiTietXuatChieu ct : listCTXC) {
 						if(ct.getMaCTXC().equals(element.getName())) {
 							try {
-								new ChonGhe_Gui(ct);
+								new ChonGhe_Gui(ct).setVisible(true);
+								
 							} catch (SQLException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -108,7 +114,8 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 				}
 			});
 		});
-				
+			
+        
         
 				
         
@@ -117,6 +124,7 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
     }
     
+   
     
     
     
@@ -150,9 +158,8 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
         );
         
         
-        pXC2.setName(CTXT.getMaCTXC());
-        System.out.println(pXC2.getName());
-        listPaneXC.add(pXC2);
+        btn_suatchieu1.setName(CTXT.getMaCTXC());
+        listbtnXC.add(btn_suatchieu1);
         pListXC.add(pXC2);
     }
     
@@ -288,7 +295,7 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-					new XuatChieu_Gui().setVisible(true);
+					new XuatChieu_Gui(parentComponent).setVisible(true);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
