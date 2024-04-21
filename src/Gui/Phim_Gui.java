@@ -38,6 +38,7 @@ import Dao.HinhAnh_Dao;
 import Dao.Phim_Dao;
 import Entity.ChiTietXuatChieu;
 import Entity.HinhAnh;
+import Entity.KhachHang;
 import Entity.Phim;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +48,6 @@ import java.util.logging.Logger;
  * @author skyga
  */
 public class Phim_Gui extends javax.swing.JFrame implements MouseListener,ActionListener {
-
 	private Phim_Dao phim_dao = new Phim_Dao();
 	private ArrayList<Phim> listPhim = new ArrayList<Phim>();
 	private ArrayList<HinhAnh> listHinh = new ArrayList<HinhAnh>();
@@ -75,6 +75,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		
 		initComponents();
@@ -456,9 +457,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 			@Override
 			public void run() {
 				new Phim_Gui().setVisible(true);
-				SwingUtilities.invokeLater(() -> {
-					
-				});
+				
 			}
 		});
 	}

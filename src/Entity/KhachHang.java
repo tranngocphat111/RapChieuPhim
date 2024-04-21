@@ -3,12 +3,12 @@ package Entity;
 public class KhachHang {
 	private String maKhachHang;
 	private String tenKhachHang;
-	private String SDT;
-	public KhachHang(String maKhachHang, String tenKhachHang, String sDT) {
-		super();
-		this.maKhachHang = maKhachHang;
-		this.tenKhachHang = tenKhachHang;
-		SDT = sDT;
+	private int DiemTichLuy;
+	
+
+	public KhachHang() {
+		// TODO Auto-generated constructor stub
+		
 	}
 	public KhachHang(String maKhachHang) {
 		
@@ -27,12 +27,20 @@ public class KhachHang {
 	public void setTenKhachHang(String tenKhachHang) {
 		this.tenKhachHang = tenKhachHang;
 	}
-	public String getSDT() {
-		return SDT;
+	public int getDiemTichLuy() {
+		return DiemTichLuy;
 	}
-	public void setSDT(String sDT) {
-		SDT = sDT;
+	public void setDiemTichLuy(int diemTichLuy) {
+		DiemTichLuy = diemTichLuy;
 	}
+	public KhachHang(String maKhachHang, String tenKhachHang, int diemTichLuy) {
+		super();
+		this.maKhachHang = maKhachHang;
+		this.tenKhachHang = tenKhachHang;
+		DiemTichLuy = diemTichLuy;
+	}
+	
+	
 
 	
 }
