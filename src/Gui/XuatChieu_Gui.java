@@ -78,7 +78,12 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 					System.out.println(element.getName());
 					for(ChiTietXuatChieu ct : listCTXC) {
 						if(ct.getMaCTXC().equals(element.getName())) {
-							new ChonGhe_Gui(ct);
+							try {
+								new ChonGhe_Gui(ct);
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							
 						}
 					}

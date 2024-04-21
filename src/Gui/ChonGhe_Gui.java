@@ -5,8 +5,15 @@
 package Gui;
 
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+
+import ConnectDB.ConnectDB;
+import Entity.Ghe;
+import Dao.ChiTietGhe_Dao;
+import Dao.Ghe_Dao;
 import Entity.ChiTietGhe;
 import Entity.ChiTietXuatChieu;
 
@@ -15,14 +22,37 @@ import Entity.ChiTietXuatChieu;
  * @author Admin
  */
 public class ChonGhe_Gui extends javax.swing.JFrame {
-	private ArrayList<ChiTietGhe> dsCTGhe = new ArrayList<ChiTietGhe>();
+	private ArrayList<ChiTietGhe> listCTGhe = new ArrayList<ChiTietGhe>();
+	private ChiTietGhe_Dao ctGhe_dao = new ChiTietGhe_Dao();
+	
+	private ArrayList<Ghe> listGhe = new ArrayList<Ghe>();
+	private Ghe_Dao ghe_dao = new Ghe_Dao();
+	
+	private ArrayList<JButton> listButton = new ArrayList<JButton>();
     /**
      * Creates new form ChonGhe
+     * @throws SQLException 
      */
-    public ChonGhe_Gui(ChiTietXuatChieu CTXC) {
+    public ChonGhe_Gui(ChiTietXuatChieu CTXC) throws SQLException {
+    	ConnectDB.Connect();
         initComponents(CTXC);
+        
+       
+        try {
+			listGhe = ghe_dao.printAll();
+			 listCTGhe = ctGhe_dao.printAll();
+			 DocDuLieuCTGheLenFrame();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         setLocationRelativeTo(null);
     }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +61,31 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    
+    public void DocDuLieuCTGheLenFrame (){
+    	for(Ghe ghe : listGhe) {
+    		for(ChiTietGhe ct: listCTGhe) {
+    			
+    			if(ghe.getMaGhe().equals(ct.getGhe().getMaGhe())) {
+    				for(JButton btn : listButton) {
+    					if(ghe.getMaGhe().equals(btn.getName())) {
+    						btn.setEnabled(false);
+    						btn.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+    						
+    						btn.setText("X");
+    						System.out.println(btn.getName());
+    					}
+    					
+    				}
+    			}
+    		}
+    	}
+    }
+    
+    
+    
+    
+    
     private void initComponents(ChiTietXuatChieu CTXC) {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
@@ -201,7 +256,210 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
+        
+        A1.setName("A1");
+        A2.setName("A2");
+        A3.setName("A3");
+        A4.setName("A4");
+        A5.setName("A5");
+        A6.setName("A6");
+        A7.setName("A7");
+        A8.setName("A8");
+        A9.setName("A9");
+        A10.setName("A10");
+        A11.setName("A11");
+        A12.setName("A12");
+        A13.setName("A13");
 
+        B1.setName("B1");
+        B2.setName("B2");
+        B3.setName("B3");
+        B4.setName("B4");
+        B5.setName("B5");
+        B6.setName("B6");
+        B7.setName("B7");
+        B8.setName("B8");
+        B9.setName("B9");
+        B10.setName("B10");
+        B11.setName("B11");
+        B12.setName("B12");
+        B13.setName("B13");
+
+        C1.setName("C1");
+        C2.setName("C2");
+        C3.setName("C3");
+        C4.setName("C4");
+        C5.setName("C5");
+        C6.setName("C6");
+        C7.setName("C7");
+        C8.setName("C8");
+        C9.setName("C9");
+        C10.setName("C10");
+        C11.setName("C11");
+        C12.setName("C12");
+        C13.setName("C13");
+
+
+        D1.setName("D1");
+        D2.setName("D2");
+        D3.setName("D3");
+        D4.setName("D4");
+        D5.setName("D5");
+        D6.setName("D6");
+        D7.setName("D7");
+        D8.setName("D8");
+        D9.setName("D9");
+        D10.setName("D10");
+        D11.setName("D11");
+        D12.setName("D12");
+        D13.setName("D13");
+
+
+        E1.setName("E1");
+        E2.setName("E2");
+        E3.setName("E3");
+        E4.setName("E4");
+        E5.setName("E5");
+        E6.setName("E6");
+        E7.setName("E7");
+        E8.setName("E8");
+        E9.setName("E9");
+        E10.setName("E10");
+        E11.setName("E11");
+        E12.setName("E12");
+        E13.setName("E13");
+
+        F1.setName("F1");
+        F2.setName("F2");
+        F3.setName("F3");
+        F4.setName("F4");
+        F5.setName("F5");
+        F6.setName("F6");
+        F7.setName("F7");
+        F8.setName("F8");
+        F9.setName("F9");
+        F10.setName("F10");
+        F11.setName("F11");
+        F12.setName("F12");
+        F13.setName("F13");
+
+
+
+
+        G1G2.setName("G1G2");
+        G3G4.setName("G3G4");
+        G5G6.setName("G5G6");
+        G7G8.setName("G7G8");
+        G9G10.setName("G9G10");
+        G11G12.setName("G11G12");
+        H1H2.setName("H1H2");
+        H3H4.setName("H3H4");
+        H5H6.setName("H5H6");
+        H7H8.setName("H7H8");
+        H9H10.setName("H9H10");
+        H11H12.setName("H11H12");
+
+        listButton.add(A1);
+        listButton.add(A2);
+        listButton.add(A3);
+        listButton.add(A4);
+        listButton.add(A5);
+        listButton.add(A6);
+        listButton.add(A7);
+        listButton.add(A8);
+        listButton.add(A9);
+        listButton.add(A10);
+        listButton.add(A11);
+        listButton.add(A12);
+        listButton.add(A13);
+        
+        listButton.add(B1);
+        listButton.add(B2);
+        listButton.add(B3);
+        listButton.add(B4);
+        listButton.add(B5);
+        listButton.add(B6);
+        listButton.add(B7);
+        listButton.add(B8);
+        listButton.add(B9);
+        listButton.add(B10);
+        listButton.add(B11);
+        listButton.add(B12);
+        listButton.add(B13);
+        
+        listButton.add(C1);
+        listButton.add(C2);
+        listButton.add(C3);
+        listButton.add(C4);
+        listButton.add(C5);
+        listButton.add(C6);
+        listButton.add(C7);
+        listButton.add(C8);
+        listButton.add(C9);
+        listButton.add(C10);
+        listButton.add(C11);
+        listButton.add(C12);
+        listButton.add(C13);
+        
+        listButton.add(D1);
+        listButton.add(D2);
+        listButton.add(D3);
+        listButton.add(D4);
+        listButton.add(D5);
+        listButton.add(D6);
+        listButton.add(D7);
+        listButton.add(D8);
+        listButton.add(D9);
+        listButton.add(D10);
+        listButton.add(D11);
+        listButton.add(D12);
+        listButton.add(D13);
+        
+        listButton.add(E1);
+        listButton.add(E2);
+        listButton.add(E3);
+        listButton.add(E4);
+        listButton.add(E5);
+        listButton.add(E6);
+        listButton.add(E7);
+        listButton.add(E8);
+        listButton.add(E9);
+        listButton.add(E10);
+        listButton.add(E11);
+        listButton.add(E12);
+        listButton.add(E13);
+        
+        listButton.add(F1);
+        listButton.add(F2);
+        listButton.add(F3);
+        listButton.add(F4);
+        listButton.add(F5);
+        listButton.add(F6);
+        listButton.add(F7);
+        listButton.add(F8);
+        listButton.add(F9);
+        listButton.add(F10);
+        listButton.add(F11);
+        listButton.add(F12);
+        listButton.add(F13);
+        
+        listButton.add(G1G2);
+        listButton.add(G3G4);
+        listButton.add(G5G6);
+        listButton.add(G7G8);
+        listButton.add(G9G10);
+        listButton.add(G11G12);
+        
+        listButton.add(H1H2);
+        listButton.add(H3H4);
+        listButton.add(H5H6);
+        listButton.add(H7H8);
+        listButton.add(H9H10);
+        listButton.add(H11H12);
+        
+        
+        
+        
         A1.setBackground(new java.awt.Color(192, 119, 180));
         A1.setText("A1");
    
@@ -213,11 +471,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A2.setBackground(new java.awt.Color(192, 119, 180));
         A2.setText("A2");
-        A2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                A2MouseClicked(evt);
-            }
-        });
+        
         A2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A2ActionPerformed(evt);
@@ -226,11 +480,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A3.setBackground(new java.awt.Color(192, 119, 180));
         A3.setText("A3");
-        A3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                A3MouseClicked(evt);
-            }
-        });
+        
         A3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A3ActionPerformed(evt);
@@ -239,11 +489,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A4.setBackground(new java.awt.Color(192, 119, 180));
         A4.setText("A4");
-        A4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                A4MouseClicked(evt);
-            }
-        });
+        
         A4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A4ActionPerformed(evt);
@@ -252,11 +498,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A5.setBackground(new java.awt.Color(192, 119, 180));
         A5.setText("A5");
-        A5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                A5MouseClicked(evt);
-            }
-        });
+       
         A5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A5ActionPerformed(evt);
@@ -265,11 +507,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A6.setBackground(new java.awt.Color(192, 119, 180));
         A6.setText("A6");
-        A6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                A6MouseClicked(evt);
-            }
-        });
+       
         A6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A6ActionPerformed(evt);
@@ -278,11 +516,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
 
         A7.setBackground(new java.awt.Color(192, 119, 180));
         A7.setText("A7");
-        A7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                A7MouseClicked(evt);
-            }
-        });
+        
         A7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 A7ActionPerformed(evt);
@@ -1032,7 +1266,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         jLabel15.setText("Ghế Thường");
 
         jLabel16.setText("Ghế bạn chọn");
-
+        
         jButton5.setBackground(new java.awt.Color(223, 13, 13));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1041,8 +1275,9 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         });
 
         jLabel17.setText("Ghế đã đặt");
-
+        
         jButton6.setBackground(new java.awt.Color(204, 204, 204));
+        jButton6.setEnabled(false);
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         jButton6.setForeground(new java.awt.Color(102, 102, 102));
         jButton6.setText("X");
@@ -1800,7 +2035,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtTongTienActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -2187,7 +2422,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
             
         else {
             A1.setBackground(new java.awt.Color(192, 119, 180));
-            dsCTGhe.remove(a1);
+            listCTGhe.remove(a1);
         }
         a1++;
     }//GEN-LAST:event_A1ActionPerformed
@@ -2196,72 +2431,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_BackActionPerformed
 
-    int a2 = 0;
-    private void A2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A2MouseClicked
-        // TODO add your handling code here:
-        if(a2 % 2 == 0 ){
-            A2.setBackground(new java.awt.Color(223, 13, 13));}
-        else {
-            A2.setBackground(new java.awt.Color(192, 119, 180));
-        }
-        a2++;
-    }//GEN-LAST:event_A2MouseClicked
-
-    int a3 =0;
-    private void A3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A3MouseClicked
-        // TODO add your handling code here:
-        if(a3 % 2 == 0 ){
-            A3.setBackground(new java.awt.Color(223, 13, 13));}
-        else {
-            A3.setBackground(new java.awt.Color(192, 119, 180));
-        }
-        a3++;
-    }//GEN-LAST:event_A3MouseClicked
-
-    int a4 = 0;
-    private void A4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A4MouseClicked
-        // TODO add your handling code here:
-        if(a4 % 2 == 0 ){
-            A4.setBackground(new java.awt.Color(223, 13, 13));}
-        else {
-            A4.setBackground(new java.awt.Color(192, 119, 180));
-        }
-        a4++;
-    }//GEN-LAST:event_A4MouseClicked
-
-    int a5 = 0;
-    private void A5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A5MouseClicked
-        // TODO add your handling code here:
-        if(a5 % 2 == 0 ){
-            A5.setBackground(new java.awt.Color(223, 13, 13));}
-        else {
-            A5.setBackground(new java.awt.Color(192, 119, 180));
-        }
-        a5++;
-    }//GEN-LAST:event_A5MouseClicked
-
-    int a6 = 0;
-    private void A6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A6MouseClicked
-        // TODO add your handling code here:
-        if(a6 % 2 == 0 ){
-            A6.setBackground(new java.awt.Color(223, 13, 13));}
-        else {
-            A6.setBackground(new java.awt.Color(192, 119, 180));
-        }
-        a6++;
-    }//GEN-LAST:event_A6MouseClicked
-
-    int a7 = 0;
-    private void A7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A7MouseClicked
-        // TODO add your handling code here:
-        if(a7 % 2 == 0 ){
-            A7.setBackground(new java.awt.Color(223, 13, 13));}
-        else {
-            A7.setBackground(new java.awt.Color(192, 119, 180));
-        }
-        a7++;
-    }//GEN-LAST:event_A7MouseClicked
-
+    
     /**
      * @param args the command line arguments
      */
@@ -2293,7 +2463,12 @@ public class ChonGhe_Gui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChonGhe_Gui(new ChiTietXuatChieu(null)).setVisible(true);
+                try {
+					new ChonGhe_Gui(new ChiTietXuatChieu(null)).setVisible(true);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
     }

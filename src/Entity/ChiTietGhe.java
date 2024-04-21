@@ -16,12 +16,10 @@ public class ChiTietGhe {
 
 	public ChiTietGhe(String maCTGhe, ChiTietXuatChieu cTXC, Ghe ghe) {
 		super();
-		
+		this.maCTGhe = maCTGhe;
 		CTXC = cTXC;
 		this.ghe = ghe;
 	}
-	
-	
 
 
 
