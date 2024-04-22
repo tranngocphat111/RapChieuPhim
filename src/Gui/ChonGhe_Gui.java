@@ -580,7 +580,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		listButton.add(H7H8);
 		listButton.add(H9H10);
 		listButton.add(H11H12);
-
+		TxtTongTienVe.setEnabled(false);
+		TxtTongTien.setEnabled(false);
 		TxtDiemCongThem.setEnabled(false);
 		TxtDiemTichLuy.setEnabled(false);
 
@@ -2301,15 +2302,39 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 				System.out.println(x.getTenKhachHang());
 				TxtDiemTichLuy.setText(Integer.toString(x.getDiemTichLuy()));
 				TxtTenKH.setText(x.getTenKhachHang());
-				
+				check_KHThanhVien.setSelected(true);
 				TxtTenKH.setEnabled(false);
 				TinhGiamGia(x.getDiemTichLuy());
+				if (check_KHThanhVien.isSelected()) {
+					TxtDiemCongThem.setVisible(true);
+					TxtDiemTichLuy.setVisible(true);
+					jLabel8.setVisible(true);
+					jLabel9.setVisible(true);
+				} else {
+					jLabel8.setVisible(false);
+					jLabel9.setVisible(false);
+					TxtDiemCongThem.setVisible(false);
+					TxtDiemTichLuy.setVisible(false);
+				}
+				
 				
 				if(x.equals(y)) {
 					TxtTenKH.setEnabled(true);
 					TxtTenKH.setText("");
 					TxtDiemTichLuy.setText("");
 					TxtSoTienGiam.removeAllItems();
+					check_KHThanhVien.setSelected(false);
+					if (check_KHThanhVien.isSelected()) {
+						TxtDiemCongThem.setVisible(true);
+						TxtDiemTichLuy.setVisible(true);
+						jLabel8.setVisible(true);
+						jLabel9.setVisible(true);
+					} else {
+						jLabel8.setVisible(false);
+						jLabel9.setVisible(false);
+						TxtDiemCongThem.setVisible(false);
+						TxtDiemTichLuy.setVisible(false);
+					}
 				}
 			}
 
@@ -2328,15 +2353,39 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 				System.out.println(x.getTenKhachHang());
 				TxtDiemTichLuy.setText(Integer.toString(x.getDiemTichLuy()));
 				TxtTenKH.setText(x.getTenKhachHang());
-				
+				check_KHThanhVien.setSelected(true);
 				TxtTenKH.setEnabled(false);
 				TinhGiamGia(x.getDiemTichLuy());
+				if (check_KHThanhVien.isSelected()) {
+					TxtDiemCongThem.setVisible(true);
+					TxtDiemTichLuy.setVisible(true);
+					jLabel8.setVisible(true);
+					jLabel9.setVisible(true);
+				} else {
+					jLabel8.setVisible(false);
+					jLabel9.setVisible(false);
+					TxtDiemCongThem.setVisible(false);
+					TxtDiemTichLuy.setVisible(false);
+				}
+			
 				
 				if(x.equals(y)) {
 					TxtTenKH.setEnabled(true);
 					TxtTenKH.setText("");
 					TxtDiemTichLuy.setText("");
 					TxtSoTienGiam.removeAllItems();
+					check_KHThanhVien.setSelected(false);
+					if (check_KHThanhVien.isSelected()) {
+						TxtDiemCongThem.setVisible(true);
+						TxtDiemTichLuy.setVisible(true);
+						jLabel8.setVisible(true);
+						jLabel9.setVisible(true);
+					} else {
+						jLabel8.setVisible(false);
+						jLabel9.setVisible(false);
+						TxtDiemCongThem.setVisible(false);
+						TxtDiemTichLuy.setVisible(false);
+					}
 				}
 					
 

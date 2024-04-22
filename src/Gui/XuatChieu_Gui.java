@@ -85,6 +85,7 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 						if(ct.getMaCTXC().equals(element.getName())) {
 							try {
 								new ChonGhe_Gui(ct).setVisible(true);
+								getParent().getParent().getParent().getParent().getParent().getParent().getParent().setVisible(false);
 								
 							} catch (SQLException e1) {
 								// TODO Auto-generated catch block
