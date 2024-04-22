@@ -55,8 +55,10 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
     }
     static boolean closeFrame = true;
     
-    public XuatChieu_Gui(ChiTietXuatChieu CTXT) throws SQLException {
+    static String maNV;
+    public XuatChieu_Gui(ChiTietXuatChieu CTXT,String MaNV) throws SQLException {
     	listCTXC = ctxc_dao.printAll();
+    	this.maNV = MaNV;
     	initComponents(CTXT);
         this.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
@@ -80,11 +82,10 @@ public class XuatChieu_Gui extends javax.swing.JInternalFrame {
 				@Override
 				public void mousePressed(MouseEvent e) {
 					// TODO Auto-generated method stub
-					System.out.println(element.getName());
 					for(ChiTietXuatChieu ct : listCTXC) {
 						if(ct.getMaCTXC().equals(element.getName())) {
 							try {
-								new ChonGhe_Gui(ct).setVisible(true);
+								new ChonGhe_Gui(ct,maNV).setVisible(true);
 								getParent().getParent().getParent().getParent().getParent().getParent().getParent().setVisible(false);
 								
 							} catch (SQLException e1) {

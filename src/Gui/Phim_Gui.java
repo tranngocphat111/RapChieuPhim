@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Window;
@@ -27,6 +28,7 @@ import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingUtilities;
@@ -59,8 +61,8 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 	 * Creates new form Ophir
 	 */
 	
-	
-	public Phim_Gui() {
+	private static String maNV;
+	public Phim_Gui(String maNV) {
 		try {
 			ConnectDB.Connect();
 		} catch (SQLException e) {
@@ -89,6 +91,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 		DocDuLieuLenFrame();
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		this.maNV = maNV;
 	}
 	
 	
@@ -124,7 +127,6 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 			
 			pPhim.setName("" + i++);
 			pPhim.addMouseListener(this);
-//			System.out.println(pPhim.getName());
 			
 			
 			
@@ -133,6 +135,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 		}
 		
 		listChonPhim.forEach((element) -> {
+		
 			element.addMouseListener(new MouseListener() {
 				
 				@Override
@@ -143,18 +146,23 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 				
 				@Override
 				public void mousePressed(MouseEvent e) {
+					for(JPanel phim : listChonPhim) {
+						phim.setBorder(BorderFactory.createLineBorder(Color.black,1));
+					}
 					// TODO Auto-generated method stub
 					
 					for(ChiTietXuatChieu ct : listCTXC) {
+
 						if(ct.getPhim().getMaPhim().equals(element.getName())) {
 							
 							XuatChieu_Gui xc;
 							try {
-								xc = new XuatChieu_Gui(ct);
+								xc = new XuatChieu_Gui(ct,maNV);
 								dtXuatChieu.removeAll();
 								xc.setVisible(true);
 								dtXuatChieu.add(xc);
-								
+								element.setBorder(BorderFactory.createLineBorder(Color.orange,2));
+	
 								
 							} catch (SQLException e1) {
 								// TODO Auto-generated catch block
@@ -162,6 +170,10 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 							}
 							
 						}
+						
+						
+						
+						
 					}
 				}
 				
@@ -353,7 +365,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(25);
         scroll.setMaximumSize(new java.awt.Dimension(528, 616));
 
-        pListPhim.setLayout(new java.awt.GridLayout(getRowListPhim(listChonPhim.size()), 2, 80, 20));
+        pListPhim.setLayout(new java.awt.GridLayout(getRowListPhim(listChonPhim.size()), 2, 75, 20));
 
         javax.swing.GroupLayout scrollLayout = new javax.swing.GroupLayout(scroll);
         scroll.setLayout(scrollLayout);
@@ -456,7 +468,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new Phim_Gui().setVisible(true);
+				new Phim_Gui("001").setVisible(true);
 				
 			}
 		});

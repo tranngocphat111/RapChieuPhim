@@ -51,6 +51,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 	private ArrayList<KhachHang> listKH = new ArrayList<KhachHang>();
 	private KhachHang_Dao khachHang_dao = new KhachHang_Dao();
 
+	private ArrayList<Ghe> listGheDuocChon = new ArrayList<Ghe>();
 	private ArrayList<JButton> listButton = new ArrayList<JButton>();
 
 	/**
@@ -59,8 +60,12 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 	 * @throws SQLException
 	 */
 
-	public ChonGhe_Gui(ChiTietXuatChieu CTXC) throws SQLException {
+	static String  MaNV;
+	static ChiTietXuatChieu cTXC;
+	public ChonGhe_Gui(ChiTietXuatChieu CTXC,String maNV) throws SQLException {
 		ConnectDB.Connect();
+		this.cTXC = CTXC;
+		this.MaNV = maNV;
 		initComponents(CTXC);
 
 		try {
@@ -96,13 +101,15 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 						for (Ghe ghe : listGhe) {
 							if (ghe.getMaGhe().equals(element.getName())) {
 								TongTienVe = TongTienVe + ghe.getDonGia();
+								listGheDuocChon.add(ghe);
+								
 							}
 						}
-
+						
 					}
 
 					else {
-
+						
 						if (element.getName().charAt(0) == 'A' || element.getName().charAt(0) == 'B') {
 							element.setBackground(new java.awt.Color(192, 119, 180));
 
@@ -116,6 +123,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 						for (Ghe ghe : listGhe) {
 							if (ghe.getMaGhe().equals(element.getName())) {
 								TongTienVe = TongTienVe - ghe.getDonGia();
+								listGheDuocChon.remove(ghe);
 							}
 						}
 
@@ -125,6 +133,33 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 					TxtTongTienVe.setText(Double.toString(TongTienVe));
 					TxtSoLuong.setText(Integer.toString(SoLuongGheDaChon));
 					TxtDiemCongThem.setText(Integer.toString(10 * SoLuongGheDaChon));
+					double TongTien = 0;
+					if(TxtSoTienGiam.getItemCount() != 0) {
+						if(TxtSoTienGiam.getSelectedItem().toString().equals("0")) {
+							TongTien = Double.parseDouble(TxtTongTienVe.getText());
+						}else {
+							Double diem = Double.parseDouble(TxtSoTienGiam.getSelectedItem().toString());
+							Double TongTienVe =  Double.parseDouble(TxtTongTienVe.getText());
+							
+							if(diem ==  100) {
+								TongTien = TongTienVe - TongTienVe *0.05;
+							}else if(diem == 200) {
+								TongTien = TongTienVe - TongTienVe *0.10;
+							}else if(diem == 500) {
+								TongTien = TongTienVe - TongTienVe *0.15;
+							}else if(diem == 1000) {
+								TongTien = TongTienVe - TongTienVe *0.2;
+							}else {
+								TongTien = TongTienVe - TongTienVe *0.4;
+							}
+							
+						}
+						
+					}else {
+						TongTien = Double.parseDouble(TxtTongTienVe.getText());
+					}
+				
+					TxtTongTien.setText(Double.toString(TongTien));
 				}
 
 				@Override
@@ -206,6 +241,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		
 		
 	}
+	
+	
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -584,7 +621,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		TxtTongTien.setEnabled(false);
 		TxtDiemCongThem.setEnabled(false);
 		TxtDiemTichLuy.setEnabled(false);
-
+		TxtTongTienVe.setText("0");
 		A1.setBackground(new java.awt.Color(192, 119, 180));
 		A1.setText("A1");
 		A1.addActionListener(new java.awt.event.ActionListener() {
@@ -2161,7 +2198,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 			}
 		});
 
-		jLabel11.setText("Số tiền giảm:");
+		jLabel11.setText("Sử dụng điểm:");
 
 		TxtSoTienGiam.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2177,8 +2214,8 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 
 		jLabel12.setText("Tổng tiền:");
 		
-		TxtSoTienGiam.addItem(0);
-		jButton1.setText("Tiếp tục");
+	
+		jButton1.setText("Thanh toán");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jButton1ActionPerformed(evt);
@@ -2286,6 +2323,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		jLabel8.setVisible(false);
 		jLabel9.setVisible(false);
 		TxtSoLuong.setEnabled(false);
+		
 		TxtSDT.getDocument().addDocumentListener(new DocumentListener() {
 
 			@Override
@@ -2293,13 +2331,11 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 				// TODO Auto-generated method stub
 				KhachHang x = new KhachHang();
 				KhachHang y = x;
-				System.out.println(x.getMaKhachHang());
 				for(int i = 0; i < listKH.size(); i++) {
 					if (TxtSDT.getText().trim().equals(listKH.get(i).getMaKhachHang().trim())) {
 						x = listKH.get(i);
 					}
 				}
-				System.out.println(x.getTenKhachHang());
 				TxtDiemTichLuy.setText(Integer.toString(x.getDiemTichLuy()));
 				TxtTenKH.setText(x.getTenKhachHang());
 				check_KHThanhVien.setSelected(true);
@@ -2344,13 +2380,11 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		
 				KhachHang x = new KhachHang();
 				KhachHang y = x;
-				System.out.println(x.getMaKhachHang());
 				for(int i = 0; i < listKH.size(); i++) {
 					if (TxtSDT.getText().trim().equals(listKH.get(i).getMaKhachHang().trim())) {
 						x = listKH.get(i);
 					}
 				}
-				System.out.println(x.getTenKhachHang());
 				TxtDiemTichLuy.setText(Integer.toString(x.getDiemTichLuy()));
 				TxtTenKH.setText(x.getTenKhachHang());
 				check_KHThanhVien.setSelected(true);
@@ -2445,6 +2479,34 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 
 	private void TxtSoTienGiamActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_TxtSoTienGiamActionPerformed
 		// TODO add your handling code here:
+
+		double TongTien = 0;
+		if(TxtSoTienGiam.getItemCount() != 0) {
+			if(TxtSoTienGiam.getSelectedItem().toString().equals("0")) {
+				TongTien = Double.parseDouble(TxtTongTienVe.getText());
+			}else {
+				Double diem = Double.parseDouble(TxtSoTienGiam.getSelectedItem().toString());
+				Double TongTienVe =  Double.parseDouble(TxtTongTienVe.getText());
+				
+				if(diem ==  100) {
+					TongTien = TongTienVe - TongTienVe *0.05;
+				}else if(diem == 200) {
+					TongTien = TongTienVe - TongTienVe *0.10;
+				}else if(diem == 500) {
+					TongTien = TongTienVe - TongTienVe *0.15;
+				}else if(diem == 1000) {
+					TongTien = TongTienVe - TongTienVe *0.2;
+				}else {
+					TongTien = TongTienVe - TongTienVe *0.4;
+				}
+				
+			}
+			
+		}else {
+			TongTien = Double.parseDouble(TxtTongTienVe.getText());
+		}
+	
+		TxtTongTien.setText(Double.toString(TongTien));
 	}// GEN-LAST:event_TxtSoTienGiamActionPerformed
 
 	private void TxtTongTienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_TxtTongTienActionPerformed
@@ -2453,6 +2515,13 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
 		// TODO add your handling code here
+		if(JOptionPane.showConfirmDialog(this, "Cảnh báo","Bạn muốn thanh toán?",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+			for(Ghe g : listGheDuocChon) {
+				String maCTG = cTXC.getMaCTXC() + g.getMaGhe();
+				ChiTietGhe ctg = new ChiTietGhe(maCTG, cTXC, g);
+				ctGhe_dao.create(ctg);
+			}
+		}
 	}// GEN-LAST:event_jButton1ActionPerformed
 
 	private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton6ActionPerformed
@@ -2840,7 +2909,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 
 	private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_BackActionPerformed
 		// TODO add your handling code here:
-		new Phim_Gui().setVisible(true);
+		new Phim_Gui(MaNV).setVisible(true);
 		;
 		setVisible(false);
 	}// GEN-LAST:event_btn_BackActionPerformed
@@ -2905,16 +2974,16 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		// </editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					new ChonGhe_Gui(new ChiTietXuatChieu(null)).setVisible(true);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
+//		java.awt.EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					new ChonGhe_Gui(new ChiTietXua).setVisible(true);
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables

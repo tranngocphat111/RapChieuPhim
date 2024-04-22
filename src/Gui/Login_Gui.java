@@ -278,8 +278,13 @@ public class Login_Gui extends javax.swing.JFrame {
                     else {
                     	
                     	if(Ktra(txtPass.getText(),txtTaiKhoan.getText())){
-                    		new Phim_Gui().setVisible(true);
-                    		setVisible(false);
+                    		for (TaiKhoan taiKhoan : listTK) {
+								if(taiKhoan.getTenDangNhap().equals(txtTaiKhoan.getText())) {
+									System.out.println(taiKhoan.getNhanVien().getMaNV());
+									new Phim_Gui(taiKhoan.getNhanVien().getMaNV()).setVisible(true);
+		                    		setVisible(false);
+								}
+							}
                     	}else {
                     		JOptionPane.showMessageDialog(this, "Mật khẩu sai", "MatKhauSai", JOptionPane.ERROR_MESSAGE);
                             txtPass.requestFocus();
@@ -334,8 +339,13 @@ public class Login_Gui extends javax.swing.JFrame {
                         else {
                         	
                         	if(Ktra(txtPass.getText(),txtTaiKhoan.getText())){
-                        		new Phim_Gui().setVisible(true);
-                        		setVisible(false);
+                        		for (TaiKhoan taiKhoan : listTK) {
+    								if(taiKhoan.getTenDangNhap().equals(txtTaiKhoan.getText())) {
+    									System.out.println(taiKhoan.getNhanVien().getMaNV());
+    									new Phim_Gui(taiKhoan.getNhanVien().getMaNV()).setVisible(true);
+    		                    		setVisible(false);
+    								}
+    							}
                         	}else {
                         		JOptionPane.showMessageDialog(this, "Mật khẩu sai", "MatKhauSai", JOptionPane.ERROR_MESSAGE);
                                 txtPass.requestFocus();

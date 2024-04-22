@@ -1,6 +1,7 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -77,5 +78,30 @@ public class ChiTietGhe_Dao {
 		state.close();
 		
 		return list;
+	}
+	
+	public  boolean create(ChiTietGhe ctg) {
+		ConnectDB.getInstance();
+		Connection con = ConnectDB.getCon();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("insert into ChiTietGhe values(?,?,?)");
+			stmt.setString(1,ctg.getMaCTGhe());
+			stmt.setString(2, ctg.getCTXC().getMaCTXC());
+			stmt.setString(3, ctg.getGhe().getMaGhe());
+			n = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		return n > 0;
 	}
 }
