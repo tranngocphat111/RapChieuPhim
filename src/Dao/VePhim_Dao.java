@@ -46,7 +46,7 @@ public class VePhim_Dao {
 				String maNV = rs.getString(3);
 				String maKH = rs.getString(4);
 				double DonGia = Double.parseDouble(rs.getString(5)) ;
-				LocalDateTime thoigianDat = LocalDateTime.parse(rs.getDate(6).toString());
+				String thoigianDat = rs.getString(6);
 				String maPhong = rs.getString(7);
 				String maPhim = rs.getString(8);
 				String maSuatChieu = rs.getString(9);
@@ -80,7 +80,8 @@ public class VePhim_Dao {
 			stmt.setString(3, ve.getNhanVien().getMaNV());
 			stmt.setString(4, ve.getKhachHang().getMaKhachHang());
 			stmt.setDouble(5, ve.getDonGia());
-			stmt.setString(6, ve.getThoiGianDat().toString());
+		
+			stmt.setString(6, ve.getThoiGianDat()); 
 			stmt.setString(7, ve.getPhong().getMaPhong());
 			stmt.setString(8, ve.getPhim().getMaPhim());
 			stmt.setString(9, ve.getXuatChieu().getMaXuatChieu());

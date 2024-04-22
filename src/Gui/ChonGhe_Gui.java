@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -19,9 +20,15 @@ import javax.swing.JOptionPane;
 import ConnectDB.ConnectDB;
 import Entity.Ghe;
 import Entity.KhachHang;
+import Entity.NhanVien;
+import Entity.Phim;
+import Entity.Phong;
+import Entity.VePhim;
+import Entity.XuatChieu;
 import Dao.ChiTietGhe_Dao;
 import Dao.Ghe_Dao;
 import Dao.KhachHang_Dao;
+import Dao.VePhim_Dao;
 import Entity.ChiTietGhe;
 import Entity.ChiTietXuatChieu;
 import javax.swing.JPanel;
@@ -40,7 +47,10 @@ import javax.swing.event.DocumentListener;
 public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, DocumentListener {
 	private static int SoLuongGheDaChon = 0;
 	private static double TongTienVe = 0;
-
+	private static int SoLuongVeThuong = 0;
+	private static int soluongVeVip = 0;
+	private static int soLuongVeCouple = 0;
+	
 	private ArrayList<ChiTietGhe> listCTGhe = new ArrayList<ChiTietGhe>();
 	private ArrayList<ChiTietGhe> listCTGheTheoPhong = new ArrayList<ChiTietGhe>();
 	private ChiTietGhe_Dao ctGhe_dao = new ChiTietGhe_Dao();
@@ -53,14 +63,18 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 
 	private ArrayList<Ghe> listGheDuocChon = new ArrayList<Ghe>();
 	private ArrayList<JButton> listButton = new ArrayList<JButton>();
-
+	private ArrayList<VePhim> listVe = new ArrayList<VePhim>();
+	private VePhim_Dao vePhim_Dao = new VePhim_Dao();
+	
+	
+	
 	/**
 	 * Creates new form ChonGhe
 	 * 
 	 * @throws SQLException
 	 */
-
-	static String  MaNV;
+	
+	static String MaNV;
 	static ChiTietXuatChieu cTXC;
 	public ChonGhe_Gui(ChiTietXuatChieu CTXC,String maNV) throws SQLException {
 		ConnectDB.Connect();
@@ -72,6 +86,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 			listGhe = ghe_dao.printAll();
 			listCTGhe = ctGhe_dao.printAll();
 			listKH = khachHang_dao.printAll();
+			listVe = vePhim_Dao.printAll();
 //			 DocDuLieuCTGheLenFrame();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -80,21 +95,14 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 
 		docDuLieuGheTheoPhongXClenFrame(CTXC);
 		DocDuLieuCTGheLenFrame();
-
+		
 		listButton.forEach((element) -> {
-
-			element.addMouseListener(new MouseListener() {
-
+			
+			element.addActionListener(new ActionListener() {
+			    int click = 0;
 				@Override
-				public void mouseReleased(MouseEvent e) {
+				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-
-				}
-
-				int click = 0;
-
-				@Override
-				public void mousePressed(MouseEvent e) {
 					if (click % 2 == 0) {
 						element.setBackground(new java.awt.Color(223, 13, 13));
 						SoLuongGheDaChon++;
@@ -105,18 +113,29 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 								
 							}
 						}
-						
+						if (element.getName().charAt(0) == 'A' || element.getName().charAt(0) == 'B') {
+							SoLuongVeThuong++;
+
+						} else if (element.getName().charAt(0) == 'G' || element.getName().charAt(0) == 'H') {
+							soLuongVeCouple++;
+						} else {
+							soluongVeVip++;
+						}
 					}
+						
 
 					else {
 						
 						if (element.getName().charAt(0) == 'A' || element.getName().charAt(0) == 'B') {
 							element.setBackground(new java.awt.Color(192, 119, 180));
+							SoLuongVeThuong--;
 
 						} else if (element.getName().charAt(0) == 'G' || element.getName().charAt(0) == 'H') {
 							element.setBackground(new java.awt.Color(255, 51, 153));
+							soLuongVeCouple--;
 						} else {
 							element.setBackground(new java.awt.Color(255, 169, 89));
+							soluongVeVip--;
 						}
 
 						SoLuongGheDaChon--;
@@ -161,26 +180,11 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 				
 					TxtTongTien.setText(Double.toString(TongTien));
 				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
-
-				}
 			});
+				
+			
 		});
+		
 
 		setLocationRelativeTo(null);
 	}
@@ -1690,7 +1694,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 														.addComponent(F12, javax.swing.GroupLayout.PREFERRED_SIZE, 52,
 																javax.swing.GroupLayout.PREFERRED_SIZE))
 												.addGroup(GheLayout.createSequentialGroup().addGap(37, 37, 37)
-														.addComponent(G11G12))))
+														.addComponent(G11G12,javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
 								.addGroup(GheLayout.createSequentialGroup().addGap(31, 31, 31).addGroup(GheLayout
 										.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 										.addGroup(GheLayout.createSequentialGroup().addGroup(GheLayout
@@ -1710,16 +1714,15 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 														.addComponent(H5H6, javax.swing.GroupLayout.PREFERRED_SIZE, 85,
 																javax.swing.GroupLayout.PREFERRED_SIZE)
 														.addPreferredGap(
-																javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(H9H10)))
+																javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+														.addComponent(H9H10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
 												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 														javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(H11H12))
+												.addComponent(H11H12, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
 										.addGroup(GheLayout.createSequentialGroup().addGap(324, 324, 324)
 												.addComponent(G7G8, javax.swing.GroupLayout.PREFERRED_SIZE, 95,
 														javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addGap(32, 32, 32).addComponent(G9G10)
+												.addGap(32, 32, 32).addComponent(G9G10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
 												.addGap(0, 0, Short.MAX_VALUE)))))
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(F13,
 										javax.swing.GroupLayout.PREFERRED_SIZE, 52,
@@ -2218,7 +2221,12 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		jButton1.setText("Thanh toán");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jButton1ActionPerformed(evt);
+				try {
+					jButton1ActionPerformed(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -2377,7 +2385,7 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 			@Override
 			public void insertUpdate(DocumentEvent e) {
 				// TODO Auto-generated method stub
-		
+				
 				KhachHang x = new KhachHang();
 				KhachHang y = x;
 				for(int i = 0; i < listKH.size(); i++) {
@@ -2512,15 +2520,87 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 	private void TxtTongTienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_TxtTongTienActionPerformed
 		// TODO add your handling code here:
 	}// GEN-LAST:event_TxtTongTienActionPerformed
-
-	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
+	
+	public boolean maTrungKH(String maKH) {
+		for(KhachHang kh : listKH) {
+			if(kh.getMaKhachHang().equals(maKH)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {// GEN-FIRST:event_jButton1ActionPerformed
 		// TODO add your handling code here
 		if(JOptionPane.showConfirmDialog(this, "Cảnh báo","Bạn muốn thanh toán?",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-			for(Ghe g : listGheDuocChon) {
-				String maCTG = cTXC.getMaCTXC() + g.getMaGhe();
-				ChiTietGhe ctg = new ChiTietGhe(maCTG, cTXC, g);
-				ctGhe_dao.create(ctg);
+			ArrayList<VePhim> listVePhimDuocChon = new ArrayList<VePhim>();
+			if(!TxtSDT.getText().equals("") || !TxtTenKH.getText().equals("")) {
+				
+				for(int i = 0; i < listGheDuocChon.size(); i++) {
+				
+					String maCTG = cTXC.getMaCTXC() + listGheDuocChon.get(i).getMaGhe();
+					ChiTietGhe ctg = new ChiTietGhe(maCTG, cTXC, listGheDuocChon.get(i));
+					ctGhe_dao.create(ctg);
+					int vitri = listVe.size() + i;
+					String maVe = "VP" + vitri;
+					
+					if(check_KHThanhVien.isSelected()) {
+						int diemTichLuy = Integer.parseInt(TxtDiemCongThem.getText()) + Integer.parseInt(TxtDiemTichLuy.getText()) - Integer.parseInt(TxtSoTienGiam.getSelectedItem().toString());
+						KhachHang kh = new KhachHang(TxtSDT.getText(), TxtTenKH.getText(),diemTichLuy ); 
+						khachHang_dao.update(kh);
+					}else {
+						
+						KhachHang kh = new KhachHang(TxtSDT.getText(), TxtTenKH.getText(),Integer.parseInt(TxtDiemCongThem.getText()) ); 
+						
+						if(maTrungKH(kh.getMaKhachHang())) {
+							khachHang_dao.create(kh);
+							listKH = khachHang_dao.printAll();
+						}
+						
+						
+					}
+					
+					Phong phong = cTXC.getPhong();
+					Phim phim = cTXC.getPhim();
+					XuatChieu xc = cTXC.getXuatChieu();
+					Ghe ghe = listGheDuocChon.get(i);
+					VePhim Ve = new VePhim(maVe, ctg, new NhanVien(MaNV), new KhachHang(TxtSDT.getText()),ghe.getDonGia(),LocalDateTime.now().toString(),phong, phim, xc, ghe, xc.getThoiGianBatDau());
+					vePhim_Dao.create(Ve);
+					listVePhimDuocChon.add(Ve);
+					
+					
+				}
+				
+			}else {
+				for(int i = 0; i < listGheDuocChon.size();i++) {
+					
+					String maCTG = cTXC.getMaCTXC() + listGheDuocChon.get(i).getMaGhe();
+					ChiTietGhe ctg = new ChiTietGhe(maCTG, cTXC, listGheDuocChon.get(i));
+					ctGhe_dao.create(ctg);
+					int vitri = listVe.size() + i;
+					String maVe = "VP" + vitri;
+					Phong phong = cTXC.getPhong();
+					Phim phim = cTXC.getPhim();
+					XuatChieu xc = cTXC.getXuatChieu();
+					Ghe ghe = listGheDuocChon.get(i);
+					VePhim Ve = new VePhim(maVe, ctg, new NhanVien(MaNV), new KhachHang(),ghe.getDonGia(),LocalDateTime.now().toString(),phong, phim, xc, ghe, xc.getThoiGianBatDau());
+					vePhim_Dao.create(Ve);
+					listVePhimDuocChon.add(Ve);
+				}
 			}
+			
+			
+			listVe = vePhim_Dao.printAll();
+			new HoaDon_Gui(SoLuongVeThuong, soluongVeVip ,soLuongVeCouple, TongTienVe, Double.parseDouble(TxtTongTien.getText()), listVePhimDuocChon).setVisible(true);;
+			SoLuongGheDaChon = 0;
+			SoLuongVeThuong = 0;
+			soLuongVeCouple = 0;
+			soluongVeVip = 0;
+			TxtSoLuong.setText("0");
+			TxtTongTienVe.setText("0");
+			TxtTongTien.setText("0");
+			TongTienVe = 0;
+			setVisible(false);
 		}
 	}// GEN-LAST:event_jButton1ActionPerformed
 
@@ -2912,6 +2992,14 @@ public class ChonGhe_Gui extends javax.swing.JFrame implements ActionListener, D
 		new Phim_Gui(MaNV).setVisible(true);
 		;
 		setVisible(false);
+		SoLuongGheDaChon = 0;
+		SoLuongVeThuong = 0;
+		soLuongVeCouple = 0;
+		soluongVeVip = 0;
+		TxtSoLuong.setText("0");
+		TxtTongTienVe.setText("0");
+		TxtTongTien.setText("0");
+		TongTienVe = 0;
 	}// GEN-LAST:event_btn_BackActionPerformed
 
 	private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton7ActionPerformed

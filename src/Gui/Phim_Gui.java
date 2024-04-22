@@ -10,11 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -73,6 +71,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 			listPhim = phim_dao.printAll();
 			listHinh = hinhAnh_Dao.printAll();
 			listCTXC = ctxc_dao.printAll();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -427,6 +426,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 		// TODO add your handling code here:
 		new Login_Gui().setVisible(true);
 		setVisible(false);
+		
 	}// GEN-LAST:event_btn_backActionPerformed
 
 	
@@ -468,7 +468,7 @@ public class Phim_Gui extends javax.swing.JFrame implements MouseListener,Action
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new Phim_Gui("001").setVisible(true);
+				new Phim_Gui("NV002").setVisible(true);
 				
 			}
 		});

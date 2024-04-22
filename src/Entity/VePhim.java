@@ -9,14 +9,14 @@ public class VePhim {
 	private NhanVien nhanVien;
 	private KhachHang khachHang;
 	private double donGia;
-	private LocalDateTime thoiGianDat;
+	private String thoiGianDat;
 	private Phong phong;
 	private Phim phim;
 	private XuatChieu xuatChieu;
 	private Ghe ghe;
 	private Time thoiGianBatDau;
 	public VePhim(String maVe, ChiTietGhe chiTietGhe, NhanVien nhanVien, KhachHang khachHang, double donGia,
-			LocalDateTime thoiGianDat, Phong phong, Phim phim, XuatChieu xuatChieu, Ghe ghe, Time thoiGianBatDau) {
+			String thoiGianDat, Phong phong, Phim phim, XuatChieu xuatChieu, Ghe ghe, Time thoiGianBatDau) {
 		super();
 		this.maVe = maVe;
 		this.chiTietGhe = chiTietGhe;
@@ -63,10 +63,10 @@ public class VePhim {
 	public void setDonGia(double donGia) {
 		this.donGia = donGia;
 	}
-	public LocalDateTime getThoiGianDat() {
+	public String getThoiGianDat() {
 		return thoiGianDat;
 	}
-	public void setThoiGianDat(LocalDateTime thoiGianDat) {
+	public void setThoiGianDat(String thoiGianDat) {
 		this.thoiGianDat = thoiGianDat;
 	}
 	public Phong getPhong() {

@@ -37,8 +37,8 @@ public class ChiTietXuatChieu_Dao {
 				 String MaPhong = rs.getString(2);
 				 int soPhong = Integer.parseInt(rs.getString(3)) ;
 				 String MaPhim = rs.getString(4);
-				 String maXC = rs.getString(5);
-				 String tenPhim = rs.getString(6);
+				 String tenPhim = rs.getString(5);
+				 String maXC = rs.getString(6);
 				 int soLuonGheDat = Integer.parseInt(rs.getString(7)) ;
 				 int SoLuongGheTrong = Integer.parseInt(rs.getString(8)) ;
 				 int SOluongGhe = Integer.parseInt(rs.getString(9)) ;

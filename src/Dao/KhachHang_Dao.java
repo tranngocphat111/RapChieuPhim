@@ -59,7 +59,31 @@ public class KhachHang_Dao {
 			stmt = con.prepareStatement("insert into KhachHang values(?,?,?)");
 			stmt.setString(1,kh.getMaKhachHang());
 			stmt.setString(2, kh.getTenKhachHang());
-			stmt.setInt(2, kh.getDiemTichLuy());
+			stmt.setInt(3, kh.getDiemTichLuy());
+			n = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		return n > 0;
+	}
+	
+	public  boolean update(KhachHang kh) {
+		ConnectDB.getInstance();
+		Connection con = ConnectDB.getCon();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("update KhachHang set DiemTichLuy = ?  where MaKhachHang =  ?");
+			stmt.setInt(1, kh.getDiemTichLuy());
+			stmt.setString(2,kh.getMaKhachHang());
 			n = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
