@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 import ConnectDB.ConnectDB;
 import Dao.TaiKhoan_Dao;
@@ -64,7 +65,6 @@ public class Login_Gui extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtTaiKhoan = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
         Login = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
 
@@ -112,16 +112,6 @@ public class Login_Gui extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jRadioButton1.setActionCommand("Quản lí");
-        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jRadioButton1.setLabel("Quản lí");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-
         Login.setBackground(new java.awt.Color(255, 169, 89));
         Login.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         Login.setActionCommand("LOG IN");
@@ -156,10 +146,6 @@ public class Login_Gui extends javax.swing.JFrame {
                             .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPass))))
                 .addGap(49, 49, 49))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton1)
-                .addGap(66, 66, 66))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,9 +159,7 @@ public class Login_Gui extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1)
-                .addGap(18, 18, 18)
+                .addGap(56, 56, 56)
                 .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(48, Short.MAX_VALUE))
         );
@@ -301,11 +285,6 @@ public class Login_Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginActionPerformed
      
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
     private void txtTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaiKhoanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTaiKhoanActionPerformed
@@ -408,7 +387,6 @@ public class Login_Gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtTaiKhoan;
     // End of variables declaration//GEN-END:variables

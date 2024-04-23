@@ -49,7 +49,12 @@ public class ChiTietHoaDon_Gui extends javax.swing.JFrame {
      */
 public int getRowListVe(int n) {
 		
-		return n / 3 + n % 3;
+		if(n % 3 == 0){
+		    return n / 3;
+		}
+		else {
+		    return n / 3 + 1;
+		}
 		
 	}
     
